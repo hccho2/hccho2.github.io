@@ -32,5 +32,11 @@ $$
 f(x) &=& \int_0^infty g(t,x) dt \\
 &=& z(x)
 \end{eqnarray}
-
 $$
+
+
+$$\begin{eqnarray} 
+y &=& x^4 + 4      \nonumber \\
+&=& (x^2+2)^2 -4x^2 \nonumber \\
+&\le&(x^2+2)^2    \nonumber
+\end{eqnarray}$$
