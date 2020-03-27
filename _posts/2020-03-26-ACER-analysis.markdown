@@ -50,15 +50,15 @@ $$\rho_t, v_t$$에는 모델의 추정치가 포함되어 있다. 즉 trainable 
 $$
 \begin{eqnarray*}
 z_{T+1} &=& V(x_T) \\
-Q^{\mbox{\small ret}}(x_T, a_T) &=& r_T + \gamma z_{T+1} (1-D_T)  \ \ \ \leftarrow \text{$a_T$는 trajectory에 있는 action이다.} \\
+Q^{ret}(x_T, a_T) &=& r_T + \gamma z_{T+1} (1-D_T)  \ \ \ \leftarrow \text{$a_T$는 trajectory에 있는 action이다.} \\
 z_{T} &=& \bar{\rho}_{T}\Big[ Q^{\mbox{\small ret}}(x_T, a_T) - Q(x_T, a_T) \Big] + V_T \\
 &\vdots& \\
-Q^{\mbox{\small ret}}(x_t, a_t) &=& r_t + \gamma z_{t+1} (1-D_t) \\
+Q^{ret}(x_t, a_t) &=& r_t + \gamma z_{t+1} (1-D_t) \\
 z_t &=& \bar{\rho}_{t} \Big[ Q^{\mbox{\small ret}}(x_t, a_t) - Q(x_t, a_t) \Big] + V_t\\
 &\vdots&
 \end{eqnarray*}$$
 
-이렇게 계산된 $$\{ Q^{\mbox{\small ret}}(x_t, a_t) \}$$의 gradient는 backpropagation에 사용하지 않는다.
+이렇게 계산된 $$\{ Q^{ret}(x_t, a_t) \}$$의 gradient는 backpropagation에 사용하지 않는다.
 
 -----
 
