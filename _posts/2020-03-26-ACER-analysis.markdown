@@ -5,7 +5,7 @@ date:   2020-03-27 20:53:34 +0900
 tag: Reinforcement-Learning, Off-Policy-RL
 ---
 
-### ACER를 분석해 보자!!!
+# ACER를 분석해 보자!!!
 
 > Policy Gradient는 기본적으로 on policy algorithm이다. PPO, ACER 등은 off policy train이 가능할 수 있는 모델을 제시하고 있다. 여기서는 ACER를 모델과 구현에 대해서 살펴보고자 한다. 
 
