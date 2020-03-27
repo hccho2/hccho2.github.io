@@ -44,7 +44,7 @@ where $$\bar{\rho}_{t}$$ is the truncated importance weight, $$\bar{\rho}_{t} = 
 $$Q$$ is the current value estimate of $$Q$$, and $$V(x)=\mathbb{E}_{a\sim \pi} Q(x,a)$$. 
 
 Retrace is an off-policy, return-based algorithm which has low variance and is proven to converge (in the tabular case) to the value function of the target policy for any behavior policy.
-* 좀 더 구체적으로, Retrace를 계산해 보자. trajectory $$(x_t, a_t,r_t,D_t,\rho_t, V_t^{\pi}, Q_t^{\pi})_{t=1,\cdots,T}$$와 $$V_{T+1}^{\pi}$$이 주어져 있다고 하자. 
+* 좀 더 구체적으로, Retrace를 계산해 보자. trajectory $$(r_t,D_t,\rho_t, V_t^{\pi}, Q_t^{\pi})_{t=1,\cdots,T}$$와 $$V_{T+1}^{\pi}$$이 주어져 있다고 하자. 
 다음 계산은 batch 단위로 이루어지며, 각 time step에서 action $$a_t$$는 여러 action이 아니고, tratjectory에 있는 action이다. 그리고 $$\rho_t$$에 사용되는 old policy는 trajectory 생성에 사용된 확률이다. 
 $$Q_t^{\pi}, V_t^{\pi}$$에는 모델의 추정치(즉, new policy에 의한 추정)이다. 즉 trainable variable이 포함되어 있다.  OpenAI baselines 구현에는 $$c=1$$이 사용되었다.
 
