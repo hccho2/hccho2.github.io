@@ -41,9 +41,11 @@ $$Q^{ret}(x_t, a_t) = r_t + \gamma  \bar{\rho}_{t+1} \Big[ Q^{ret}(x_{t+1}, a_{t
 
 where $$\bar{\rho}_{t}$$ is the truncated importance weight, 
 
-$$\bar{\rho}_{t} = \min \left\{c, \rho_t \right\}
+$$\bar{\rho}_{t} = \min \left\{c, \rho_t \right\}$$ 
 
-$$ with $$\rho_{t} = \frac{\pi(a_{t}|x_{t})}{\mu(a_{t}|x_{t})}$$, 
+with 
+
+$$\rho_{t} = \frac{\pi(a_{t}|x_{t})}{\mu(a_{t}|x_{t})}$$, 
 
 $$Q$$ is the current value estimate of $$Q$$, and $$V(x)=\mathbb{E}_{a\sim \pi} Q(x,a)$$. 
 
