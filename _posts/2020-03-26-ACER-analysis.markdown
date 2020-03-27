@@ -29,7 +29,7 @@ $$
 
 $$
 \begin{eqnarray}
-f(x) &=& \int_0^infty g(t,x) dt \\
+f(x) &=& \int_0^\infty g(t,x) dt \\
 &=& z(x)
 \end{eqnarray}
 $$
