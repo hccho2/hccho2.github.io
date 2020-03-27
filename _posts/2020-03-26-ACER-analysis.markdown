@@ -18,10 +18,10 @@ categories: jekyll update
 
 $$
 \begin{eqnarray*}
-x_t &=& \text { state}, \ \a_t = \text{ action} \\
+x_t &=& \text { state}, \ \ a_t = \text{ action} \\
 \pi(a_t|x_t) &=& \text {모델이 추정한 action 확률}, \ \ \mu(a_{t}|x_{t}) = \text{ old policy 확률}\\
 Q(x_t,a_t) &=& \text{모델이 추정한 action에 대한 $Q$ 값} \\
-V(x_t) &=& \E [Q(x_t, a_t)] =  \sum_{a_t} \pi(a_t|x_t) Q(x_t,a_t)
+V(x_t) &=& \mathbb{E} [Q(x_t, a_t)] =  \sum_{a_t} \pi(a_t|x_t) Q(x_t,a_t)
 \end{eqnarray*}
 $$
 
