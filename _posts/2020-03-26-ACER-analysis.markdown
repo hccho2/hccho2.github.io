@@ -24,6 +24,7 @@ Q(x_t,a_t) &=& \text{모델이 추정한 action에 대한 $Q$ 값} \\
 V(x_t) &=& \mathbb{E} [Q(x_t, a_t)] =  \sum_{a_t} \pi(a_t|x_t) Q(x_t,a_t)
 \end{eqnarray*}
 $$
+
 -----
 
 ## Retrace
