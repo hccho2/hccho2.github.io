@@ -1,126 +1,117 @@
 /**
  * Site header
  */
-
 .site-header {
-  background: #111;
-  opacity: 0.8;
+  border-top: 5px solid $brand-color-dark;
+  border-bottom: 1px solid $brand-color-light;
   min-height: $spacing-unit * 1.865;
-  position: relative;
+  line-height: $base-line-height * $base-font-size * 2.25;
 
-  /*
-  min-height: $spacing-unit * 1.75;
-  background: #222;
-  opacity: 0.8;
-  position: fixed;
-  top: 0;
-  width: 100%;
-  display: block;
-  transition: top 0.3s;
-  */
+  // Positioning context for the mobile navigation icon
+  position: relative;
 }
 
 .site-title {
   @include relative-font-size(1.625);
-  font-weight: 600;
-  color: #ffffff; // $crimson-color;
-  line-height: $base-line-height * $base-font-size * 2.25;
+  font-weight: 300;
   letter-spacing: -1px;
   margin-bottom: 0;
   float: left;
 
-  &,
-  &:visited {
-    color: #ffffff; // $crimson-color-dark;
+  @include media-query($on-palm) {
+    padding-right: 45px;
   }
 
-  &:hover {
-    color: $crimson-color-light;
-    text-decoration: none;
-    cursor: pointer;
+  &,
+  &:visited {
+    color: $brand-color-dark;
   }
 }
 
 .site-nav {
-  float: right;
+  position: absolute;
+  top: 9px;
+  right: $spacing-unit / 2;
+  background-color: $background-color;
+  border: 1px solid $brand-color-light;
+  border-radius: 5px;
   text-align: right;
-  line-height: $base-line-height * $base-font-size * 2.25;
-  padding-right: 10px;
 
   .nav-trigger {
       display: none;
   }
 
   .menu-icon {
+    float: right;
+    width: 36px;
+    height: 26px;
+    line-height: 0;
+    padding-top: 10px;
+    text-align: center;
+
+    > svg path {
+      fill: $brand-color-dark;
+    }
+  }
+
+  label[for="nav-trigger"] {
+    display: block;
+    float: right;
+    width: 36px;
+    height: 36px;
+    z-index: 2;
+    cursor: pointer;
+  }
+
+  input ~ .trigger {
+    clear: both;
     display: none;
   }
 
+  input:checked ~ .trigger {
+    display: block;
+    padding-bottom: 5px;
+  }
+
   .page-link {
-    color: #ffffff; // $text-color;
+    color: $text-color;
     line-height: $base-line-height;
+    display: block;
+    padding: 5px 10px;
 
     // Gaps between nav items, but not on the last one
     &:not(:last-child) {
-      margin-right: 20px;
+      margin-right: 0;
     }
-
-    &:hover {
-      color: $crimson-color-light;
-      text-decoration: none;
-      cursor: pointer;
-    }
+    margin-left: 20px;
   }
 
-  @include media-query($on-palm) {
-    position: absolute;
-    top: 9px;
-    right: $spacing-unit / 2;
-    background-color: $background-color;
-    border: 1px solid $grey-color-light;
-    border-radius: 5px;
-    text-align: right;
+  @media screen and (min-width: $on-medium) {
+    position: static;
+    float: right;
+    border: none;
+    background-color: inherit;
 
     label[for="nav-trigger"] {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 36px;
-      z-index: 2;
-      cursor: pointer;
-    }
-
-    .menu-icon {
-      display: block;
-      float: right;
-      width: 36px;
-      height: 26px;
-      line-height: 0;
-      padding-top: 10px;
-      text-align: center;
-
-      > svg path {
-        fill: $grey-color-dark;
-      }
-    }
-
-    input ~ .trigger {
-      clear: both;
       display: none;
     }
 
-    input:checked ~ .trigger {
+    .menu-icon {
+      display: none;
+    }
+
+    input ~ .trigger {
       display: block;
-      padding-bottom: 5px;
     }
 
     .page-link {
-      display: block;
-      padding: 5px 10px;
+      display: inline;
+      padding: 0;
 
       &:not(:last-child) {
-        margin-right: 0;
+        margin-right: 20px;
       }
-      margin-left: 20px;
+      margin-left: auto;
     }
   }
 }
@@ -131,31 +122,79 @@
  * Site footer
  */
 .site-footer {
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  text-align: center;
-  font-size: $small-font-size;
-  color: $grey-color;
-  clear: both;
-  margin-bottom: 30px;
+  border-top: 1px solid $brand-color-light;
+  padding: $spacing-unit 0;
+}
 
-  a {
-    color: $grey-color;
+.footer-heading {
+  @include relative-font-size(1.125);
+  margin-bottom: $spacing-unit / 2;
+}
+
+.feed-subscribe .svg-icon {
+  padding: 5px 5px 2px 0
+}
+
+.contact-list,
+.social-media-list {
+  list-style: none;
+  margin-left: 0;
+}
+
+.footer-col-wrapper,
+.social-links {
+  @include relative-font-size(0.9375);
+  color: $brand-color;
+}
+
+.footer-col {
+  margin-bottom: $spacing-unit / 2;
+}
+
+.footer-col-1,
+.footer-col-2 {
+  width: calc(50% - (#{$spacing-unit} / 2));
+}
+
+.footer-col-3 {
+  width: calc(100% - (#{$spacing-unit} / 2));
+}
+
+@media screen and (min-width: $on-large) {
+  .footer-col-1 {
+    width: calc(35% - (#{$spacing-unit} / 2));
   }
-  p {
-    margin: 5px auto;
-    width: 200px;
+
+  .footer-col-2 {
+    width: calc(20% - (#{$spacing-unit} / 2));
   }
-  img {
-    width: 26px;
-    height: 26px;
-    margin: 0 4px;
-    display: block;
-    float: left;
+
+  .footer-col-3 {
+    width: calc(45% - (#{$spacing-unit} / 2));
   }
 }
+
+@media screen and (min-width: $on-medium) {
+  .footer-col-wrapper {
+    display: flex
+  }
+
+  .footer-col {
+    width: calc(100% - (#{$spacing-unit} / 2));
+    padding: 0 ($spacing-unit / 2);
+
+    &:first-child {
+      padding-right: $spacing-unit / 2;
+      padding-left: 0;
+    }
+
+    &:last-child {
+      padding-right: 0;
+      padding-left: $spacing-unit / 2;
+    }
+  }
+}
+
 
 
 /**
@@ -163,11 +202,15 @@
  */
 .page-content {
   padding: $spacing-unit 0;
+  flex: 1 0 auto;
 }
 
 .page-heading {
-  @include relative-font-size(1.5);
-  font-weight: 600;
+  @include relative-font-size(2);
+}
+
+.post-list-heading {
+  @include relative-font-size(1.75);
 }
 
 .post-list {
@@ -175,131 +218,125 @@
   list-style: none;
 
   > li {
-    margin-bottom: $spacing-unit * 2;
+    margin-bottom: $spacing-unit;
   }
 }
 
 .post-meta {
   font-size: $small-font-size;
-  color: $grey-color;
-
-  a.post-tag {
-    border-radius: 5px;
-    border: 1px solid $grey-color;
-    color: $grey-color;
-    padding: 1px 5px;
-    margin-left: 5px;
-    &:hover {
-      border: 1px solid $brand-color;
-      text-decoration: none;
-      color: #ffffff;
-      background: $brand-color;
-    }
-  }
+  color: $brand-color;
 }
 
 .post-link {
   display: block;
-  @include relative-font-size(1.6);
-  font-weight: 600;
-
-  font-color: #000000;
-
-  &:hover {
-    color: $crimson-color-light;
-    text-decoration: none;
-    cursor: pointer;
-  }
+  @include relative-font-size(1.5);
 }
 
-/**
- * FAQ
- */
 
-.other-pages {
-    margin-top: $spacing-unit * 0.5;
-}
-
-div.qa {
-    margin: 10px;
-    padding: 10px;
-    .question {
-        border-radius: 5px;
-        background: #eeeeee;
-        padding: 5px;
-        padding-left: 20px;
-    }
- }
 
 /**
  * Posts
  */
 .post-header {
-  margin-top: $spacing-unit * 2;
   margin-bottom: $spacing-unit;
 }
 
-.post-title {
-  @include relative-font-size(2.2);
+.post-title,
+.post-content h1 {
+  @include relative-font-size(2.625);
   letter-spacing: -1px;
-  line-height: 1.2;
+  line-height: 1.15;
 
-  @include media-query($on-laptop) {
-    @include relative-font-size(2.2);
+  @media screen and (min-width: $on-large) {
+    @include relative-font-size(2.625);
   }
-
-  font-weight: $base-font-weight * 1.5;
-  width: $content-width * 0.85;
-  max-width: 100%;
 }
 
 .post-content {
   margin-bottom: $spacing-unit;
 
+  h1, h2, h3 { margin-top: $spacing-unit * 2 }
+  h4, h5, h6 { margin-top: $spacing-unit }
+
   h2 {
-    @include relative-font-size(1.8);
+    @include relative-font-size(1.75);
 
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.75);
-    }
-
-    font-weight: $base-font-weight * 1.5;
-    margin-top: $spacing-unit * 1.55;
-
-    blockquote: {
-        line-height: 1.5;
+    @media screen and (min-width: $on-large) {
+      @include relative-font-size(2);
     }
   }
 
   h3 {
-    @include relative-font-size(1.3);
+    @include relative-font-size(1.375);
 
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.375);
+    @media screen and (min-width: $on-large) {
+      @include relative-font-size(1.625);
     }
-    font-weight: $base-font-weight * 1.35;
-    margin-top: $spacing-unit * 1.1;
   }
 
   h4 {
-    @include relative-font-size(1.15);
-
-    @include media-query($on-laptop) {
-      @include relative-font-size(1.125);
-    }
-    font-weight: $base-font-weight * 2.0;
+    @include relative-font-size(1.25);
   }
 
-  a {
-    border-bottom: 1px dotted #bbb;
-    padding-bottom: 1px;
+  h5 {
+    @include relative-font-size(1.125);
+  }
+  h6 {
+    @include relative-font-size(1.0625);
+  }
+}
 
-    &:hover {
-      color: $crimson-color-light;
-      border-bottom: 1px solid $crimson-color-light;
-      padding-bottom: 1px;
-      text-decoration: none;
+
+.social-media-list {
+  display: table;
+  margin: 0 auto;
+  li {
+    float: left;
+    margin: 5px 10px 5px 0;
+    &:last-of-type { margin-right: 0 }
+    a {
+      display: block;
+      padding: $spacing-unit / 4;
+      border: 1px solid $brand-color-light;
+      &:hover { border-color: darken($brand-color-light, 10%) }
     }
   }
+}
 
+
+
+/**
+ * Pagination navbar
+ */
+.pagination {
+  margin-bottom: $spacing-unit;
+  @extend .social-media-list;
+  li {
+    a, div {
+      min-width: 41px;
+      text-align: center;
+      box-sizing: border-box;
+    }
+    div {
+      display: block;
+      padding: $spacing-unit / 4;
+      border: 1px solid transparent;
+
+      &.pager-edge {
+        color: darken($brand-color-light, 5%);
+        border: 1px dashed;
+      }
+    }
+  }
+}
+
+
+
+/**
+ * Grid helpers
+ */
+@media screen and (min-width: $on-large) {
+  .one-half {
+    width: calc(50% - (#{$spacing-unit} / 2));
+  }
 }
