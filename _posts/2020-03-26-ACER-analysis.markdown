@@ -12,3 +12,5 @@ categories: jekyll update
 
 * [Sample Efficient Actor-Critic with Experience Replay](https://arxiv.org/abs/1611.01224)
 * 구현 코드는 OpenAI의 [baselines](https://github.com/openai/baselines/tree/master/baselines/acer)을 참고하면 된다. 이 구현은 논문에 아주 충실하게 구현되어 있다.
+* Actor-Critic Model에서는 action 확률과 value를 예측하는 방식인데, ACER에서는 action-value function $$Q(x_t,a_t)$$를 예측하고, 그 기대값인 $$V(x_t)$$도 사용한다.
+* Off Policy algorithm에서 advantage 계산에 사용되는 $Q$값을 예측하기 위해서 lambda return 식을 제안하고 있다.
