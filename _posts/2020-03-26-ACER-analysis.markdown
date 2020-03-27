@@ -35,7 +35,6 @@ $$ R^{\lambda}_{t} = r_t + (1-\lambda)\gamma V(x_{t+1}) + \lambda \gamma \rho_{t
 * Given a trajectory(episode path) generated under the behavior policy $$\mu$$(old policy), the Retrace estimator can be expressed recursively as follows($$\lambda = 1$$}:
 
 $$Q^{ret}(x_t, a_t) = r_t + \gamma  \bar{\rho}_{t+1} \Big[ Q^{ret}(x_{t+1}, a_{t+1}) -   Q(x_{t+1}, a_{t+1})\Big] + \gamma V(x_{t+1}),$$
-
 where $$\bar{\rho}_{t}$$ is the truncated importance weight, $$\bar{\rho}_{t} = \min \left\{c, \rho_t \right\}$$ with $$\rho_{t} = \frac{\pi(a_{t}|x_{t})}{\mu(a_{t}|x_{t})}$$,  
 $$Q$$ is the current value estimate of $$Q$$, and $$V(x)=\mathbb{E}_{a\sim \pi} Q(x,a)$$. 
 Retrace is an off-policy, return-based algorithm which has low variance and is proven to converge (in the tabular case) to the value function of the target policy for any behavior policy.
