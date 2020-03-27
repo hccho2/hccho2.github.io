@@ -9,7 +9,6 @@ tag: Reinforcement-Learning, Off-Policy-RL
 
 > Policy Gradient는 기본적으로 on policy algorithm이다. PPO, ACER 등은 off policy train이 가능할 수 있는 모델을 제시하고 있다. 여기서는 ACER를 모델과 구현에 대해서 살펴보고자 한다. 
 
-<!--more-->
 
 * [Sample Efficient Actor-Critic with Experience Replay](https://arxiv.org/abs/1611.01224)
 * 구현 코드는 OpenAI의 [baselines](https://github.com/openai/baselines/tree/master/baselines/acer)을 참고하면 된다. 이 구현은 논문에 아주 충실하다.
@@ -41,3 +40,39 @@ $$Q^{ret}(x_t, a_t) = r_t + \gamma  \bar{\rho}_{t+1} \Big[ Q^{ret}(x_{t+1}, a_{t
 where $$\bar{\rho}_{t}$$ is the truncated importance weight, $$\bar{\rho}_{t} = \min \left\{c, \rho_t \right\}$$ with $$\rho_{t} = \frac{\pi(a_{t}|x_{t})}{\mu(a_{t}|x_{t})}$$,  
 $$Q$$ is the current value estimate of $$Q$$, and $$V(x)=\mathbb{E}_{a\sim \pi} Q(x,a)$$. 
 Retrace is an off-policy, return-based algorithm which has low variance and is proven to converge (in the tabular case) to the value function of the target policy for any behavior policy.
+* 좀 더 구체적으로, Retrace를 계산해 보자. trajectory $$(x_t, a_t,r_t,D_t,\rho_t, v_t)_{t=1,\cdots,T}$$와 $$V_{T+1}$$이 주어져 있다고 하자. 
+다음 계산은 batch 단위로 이루어지며, 각 time step에서 action $$a_t$$는 여러 action이 아니고, tratjectory에 있는 action이다. 그리고 $$\rho_t$$에 사용되는 old policy는 trajectory 생성에 사용된 확률이다. 
+$$\rho_t, v_t$$에는 모델의 추정치가 포함되어 있다. 즉 trainable variable이 포함되어 있다.  OpenAI baselines 구현에는 $$c=1$$이 사용되었다.
+
+$$
+\begin{eqnarray*}
+z_{T+1} &=& V(x_T) \\
+Q^{\mbox{\small ret}}(x_T, a_T) &=& r_T + \gamma z_{T+1} (1-D_T)  \ \ \ \leftarrow \text{$a_T$는 trajectory에 있는 action이다.} \\
+z_{T} &=& \bar{\rho}_{T}\Big[ Q^{\mbox{\small ret}}(x_T, a_T) - Q(x_T, a_T) \Big] + V_T \\
+&\vdots& \\
+Q^{\mbox{\small ret}}(x_t, a_t) &=& r_t + \gamma z_{t+1} (1-D_t) \\
+z_t &=& \bar{\rho}_{t} \Big[ Q^{\mbox{\small ret}}(x_t, a_t) - Q(x_t, a_t) \Big] + V_t\\
+&\vdots&
+\end{eqnarray*}$$
+
+이렇게 계산된 $$\{ Q^{\mbox{\small ret}}(x_t, a_t) \}$$의 gradient는 backpropagation에 사용하지 않는다.
+
+-----
+
+## Policy Gradient
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
