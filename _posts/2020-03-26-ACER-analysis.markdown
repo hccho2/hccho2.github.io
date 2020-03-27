@@ -6,8 +6,6 @@ categories: jekyll update
 ---
 *** ACER를 분석해 보자!!!
 
-$$
-D_{KL}(p \| q) = \int_x p(x) \log \frac{p(x)}{q(x)} dx
-$$
+$$D_{KL}(p \| q) = \int_x p(x) \log \frac{p(x)}{q(x)} dx$$
 
 이 식의 의미
