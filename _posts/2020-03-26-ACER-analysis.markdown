@@ -16,3 +16,11 @@ $$
 & & + \underset{a \sim \pi}{\mathbb{E}} \left( \left[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \right]_+ \hspace{-3mm}
 \nabla_{\theta}  \log \pi_{\theta}(a| x_t)[Q_{\theta_v}(x_t, a)- V_{\theta_v}(x_t)] \right)
 \end{aligned}$$
+
+행렬
+\begin{pmatrix}
+ 1 & a_1 & a_1^2 & \cdots & a_1^n \\
+ 1 & a_2 & a_2^2 & \cdots & a_2^n \\
+ \vdots  & \vdots& \vdots & \ddots & \vdots \\
+ 1 & a_m & a_m^2 & \cdots & a_m^n    
+ \end{pmatrix}
