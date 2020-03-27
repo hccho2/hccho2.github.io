@@ -26,3 +26,11 @@ $$
  1 & a_m & a_m^2 & \cdots & a_m^n    
  \end{pmatrix}
 $$
+
+$$
+\begin{eqnarray}
+f(x) &=& \int_0^infty g(t,x) dt \\
+&=& z(x)
+\end{eqnarray}
+
+$$
