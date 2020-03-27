@@ -25,6 +25,9 @@ Q(x_t,a_t) &=& \text{모델이 추정한 action에 대한 $Q$ 값} \\
 V(x_t) &=& \mathbb{E} [Q(x_t, a_t)] =  \sum_{a_t} \pi(a_t|x_t) Q(x_t,a_t)
 \end{eqnarray*}
 $$
+-----
+
+## Retrace
 
 * 다른 Off Policy algorithm에서 advantage 계산에 사용되는 $$Q$$값을 예측하기 위해서 lambda return 식을 제안하고 있다. (see T. Degris, M. White, and R. S. Sutton. Off-policy actor-critic. In ICML, pp. 457–464, 2012.)
 
