@@ -73,10 +73,10 @@ y &=& x^4 + 4      \nonumber \\
 
 $$\eqref{eq0001)$$과 식$$(\eqref{eq0002})$$  $$\eqref{eq0001)$$과 식$$(\eqref{eq0002})$$
 
-
+$$
 \begin{align}
     g &= \int_a^b f(x)dx \label{eq1}\tag{1} \\
     a &= b + c \label{eq2}\tag{2}
 \end{align}
-
+$$
 See (\ref{eq1}) and (\ref{eq2})
