@@ -83,20 +83,20 @@ z_t &=& \bar{\rho}_{t} \Big[ Q^{ret}(x_t, a_t) - Q^{\pi}(x_t, a_t) \Big] + V_t^{
 
 * 이제 policy graident 식에 관해 살펴보자. $\pi$가 train 대상이 되는 new policy이고, $\mu$가 data를 생성한 old policy이다. 다음 2개의 식을 살펴보자.
 $$
-\begin{eqnarray}
+\begin{eqnarray*}
 & & \mathbb{E}_{a_t \sim \mu} \Big[\rho_t \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \\
 &=&  \mathbb{E}_{a_t \sim \mu} \Big[(\rho_t-c+c) \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \nonumber\\
 &=&  \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \mu} \Big[(\rho_t-c) \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \nonumber\\
 &=& \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \pi} \Big[\frac{\rho_t-c}{\rho} \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] 
-\end{eqnarray}
+\end{eqnarray*}
 $$
 이 식과 다음 식은 같은 식이다.
 $$
-\begin{eqnarray}
+\begin{eqnarray*}
 g_t^{marg}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) Q^\pi(x_t, a_t)  
  + \underset{a \sim \pi}{\mathbb{E}} \left( \left[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \right]_+ \hspace{-3mm}
 \nabla_{\theta}  \log \pi_{\theta}(a| x_t) Q^\pi(x_t, a) \right). 
-\end{eqnarray}
+\end{eqnarray*}
 $$
 
 *위의 2개 식이 같은 이유를 $$\rho < c$$인 경우와 $$\rho \geq c$$인 경우로 나누어 생각해 보면 알 수 있다.
@@ -106,19 +106,19 @@ old policy에서 new policy에 대한 기대값으로 전환하면 앞 식의 �
 
 * off policy 환경에서 계산을 위하여 $Q^\pi$를 $Q^{ret}$로 대체하여 $\widehat{g}_t^{marg}$을 다음과 같이 정의한다.
 $$
-\begin{eqnarray}
+\begin{eqnarray*}
 \widehat{g}_t^{marg}}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) Q^{ret}(x_t, a_t) 
   + \underset{a \sim \pi}{\mathbb{E}} \left( \left[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \right]_+ \hspace{-3mm}
 \nabla_{\theta}  \log \pi_{\theta}(a| x_t) Q^\pi(x_t, a) \right). \label{eq39}
-\end{eqnarray}
+\end{eqnarray*}
 $$
 * 다시 Gain에 해당하는 부분을 Advantage로 변환하여 $\widehat{g}_t^{acer}}$를 정의한다.
 $$
-\begin{eqnarray}
+\begin{eqnarray*}
 \widehat{g}_t^{acer}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) \overbrace{\big[Q^{ret}(x_t, a_t) - V^\pi(x_t)\big]}^{\text{stop gradient}}  \\
  && + \underset{a \sim \pi}{\mathbb{E}} \left( \left[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \right]_+ \hspace{-3mm}
 \nabla_{\theta}  \log \pi_{\theta}(a| x_t) \overbrace{\big[Q^\pi(x_t, a)- V^\pi(x_t)\big]}^{\text{stop gradient}} \right). 
-\end{eqnarray}
+\end{eqnarray*}
 $$
 
 
