@@ -71,4 +71,4 @@ y &=& x^4 + 4      \nonumber \\
 \end{eqnarray}$$
 
 
-$$\eqref{eq0001)$$과 식$$(\eqref{eq0002})$$
+$$\eqref{eq0001)$$과 식$$(\eqref{eq0002})$$  $$\eqref{eq0001)$$과 식$$(\eqref{eq0002})$$
