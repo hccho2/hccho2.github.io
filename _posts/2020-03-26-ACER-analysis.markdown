@@ -27,7 +27,7 @@ PG는 확률을 optimization해야 되는데, `data의 reward를 얻게한 actio
 $$
 \begin{eqnarray*}
 x_t &=& \text { state}, \ \ a_t = \text{ action} \\
-\pi(a_t|x_t) &=& \text {모델이 추정한 action 확률}, \ \ \mu(a_{t}|x_{t}) = \text{ old policy 확률}\\
+\pi(a_t \vert x_t) &=& \text {모델이 추정한 action 확률}, \ \ \mu(a_{t}|x_{t}) = \text{ old policy 확률}\\
 Q(x_t,a_t) &=& \text{모델이 추정한 action에 대한 $Q$ 값} \\
 V(x_t) &=& \mathbb{E} [Q(x_t, a_t)] =  \sum_{a_t} \pi(a_t|x_t) Q(x_t,a_t)
 \end{eqnarray*}
@@ -115,9 +115,9 @@ $$
 * 다시 Gain에 해당하는 부분을 Advantage로 변환하여 $$\widehat{g}_t^{acer}}$$를 정의한다.
 $$
 \begin{eqnarray*}
-\widehat{g}_t^{acer}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) \overbrace{\big[Q^{ret}(x_t, a_t) - V^\pi(x_t)\big]}^{\text{stop gradient}}  \\
+\widehat{g}_t^{acer}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t \vert x_t) \overbrace{\big[Q^{ret}(x_t, a_t) - V^\pi(x_t)\big]}^{\text{stop gradient}}  \\
  && + \underset{a \sim \pi}{\mathbb{E}} \Bigg( \Big[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \Big]_+ \hspace{-3mm}
-\nabla_{\theta}  \log \pi_{\theta}(a| x_t) \overbrace{\big[Q^\pi(x_t, a)- V^\pi(x_t)\big]}^{\text{stop gradient}} \Bigg). 
+\nabla_{\theta}  \log \pi_{\theta}(a\vert x_t) \overbrace{\big[Q^\pi(x_t, a)- V^\pi(x_t)\big]}^{\text{stop gradient}} \Bigg). 
 \end{eqnarray*}
 $$
 
