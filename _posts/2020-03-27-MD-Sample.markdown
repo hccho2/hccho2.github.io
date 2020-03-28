@@ -66,8 +66,9 @@ $$
 
 $$\begin{eqnarray} 
 y &=& x^4 + 4      \nonumber \\
-&=& (x^2+2)^2 -4x^2 \nonumber \\
-&\le&(x^2+2)^2    \nonumber
+&=& (x^2+2)^2 -4x^2  \label{eq0001}\\
+&\le&(x^2+2)^2   \label{eq0002}
 \end{eqnarray}$$
 
 
+$$\ref{eq0001)$$과 식$$(\ref{eq0002})$$
