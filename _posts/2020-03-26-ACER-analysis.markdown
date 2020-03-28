@@ -112,7 +112,7 @@ $$
 \nabla_{\theta}  \log \pi_{\theta}(a \vert x_t) Q^\pi(x_t, a) \Bigg).
 \end{eqnarray*}
 $$
-* 다시 Gain에 해당하는 부분을 Advantage로 변환하여 $$\widehat{g}_t^{acer}}$$를 정의한다.
+* 다시 Gain에 해당하는 부분을 Advantage로 변환하여 $$\widehat{g}_t^{acer}$$를 정의한다.
 $$
 \begin{eqnarray*}
 \widehat{g}_t^{acer}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t \vert x_t) \overbrace{\big[Q^{ret}(x_t, a_t) - V^\pi(x_t)\big]}^{\text{stop gradient}}  \\
