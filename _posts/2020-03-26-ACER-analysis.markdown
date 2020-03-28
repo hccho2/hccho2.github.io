@@ -33,7 +33,7 @@ $$
 
 ## Retrace
 
-* on policy 에서는 (batch) data가 train 대상인 현재의 network으로부터 생성되었어야 하는데, old policy로 생성된 data로 train을 할 수가 없다. 그래서 old policy로 생성된 $$r_t$$값을 train 대상이 되는 현재의 network이 예측한 $$Q^\pi, V^\pi$$로 보정해서 total gain $$G_t$$에 해당하는 $$Q^{ret}$$를 계산한다.
+* on policy 에서는 (batch) data가 train 대상인 현재의 network으로부터 생성되었어야 하기 때문에, old policy로 생성된 data로 train을 할 수가 없다. 그래서 old policy로 생성된 $$r_t$$값을 train 대상이 되는 현재의 network이 예측한 $$Q^\pi, V^\pi$$로 보정해서 total gain $$G_t$$에 해당하는 $$Q^{ret}$$를 계산한다.
 * ACER 이전의 다른 Off Policy algorithm에서는 advantage 계산에 사용되는 $$Q$$값을 예측하기 위해서 lambda return 식을 제안하고 있다. (see T. Degris, M. White, and R. S. Sutton. Off-policy actor-critic. In ICML, pp. 457–464, 2012.)
 
 $$ R^{\lambda}_{t} = r_t + (1-\lambda)\gamma V(x_{t+1}) + \lambda \gamma \rho_{t+1} R^{\lambda}_{t+1}$$ 
