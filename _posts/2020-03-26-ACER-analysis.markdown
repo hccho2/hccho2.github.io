@@ -60,10 +60,10 @@ $$\big\{ ( r_t,d_t,\rho_t, V_t^{\pi}(x_t), Q_t^{\pi}(x_t,a_t) )\big\}_{t=1,\cdot
 * 다시 한번 정리해 보자. 
 1. $$(r_t,d_t)$$는 old policy에 의해 생성된 data.
 2. $$\rho_t$$는 trajectory 사용된 old policy와 train대상이 되는 new policy의 action $$a_t$$에 대한 확률의 비율이다.
-3. $$\big(V_t^{\pi}(x_t), Q_t^{\pi}(x_t,a_t)\big)$$는 new policy로 예측된 (traiable variable이 포함된) 값에서 trajectory date $$(x_t,a_t)$$에 해당하는 값이다.
+3. $$\big(V_t^{\pi}(x_t), Q_t^{\pi}(x_t,a_t)\big)$$는 new policy로 예측된 (traiable variable이 포함된) 값에서 trajectory data $$(x_t,a_t)$$에 해당하는 값이다.
 
 참고로, OpenAI baselines 구현에서, $$\bar{\rho}_{t} = \min \left\{c, \rho_t \right\}$$에서 $$c=1$$이 사용되었다. 
-이제 $$Q^{ret}$$ 계산의 제귀적인 과정은 다음과 같다. 
+이제 $$Q^{ret}$$ 계산의 재귀적인 과정은 다음과 같다. 
 $$
 \begin{eqnarray*}
 z_{T+1} &=& V_{T+1}^{\pi} \\
