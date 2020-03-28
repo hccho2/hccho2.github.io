@@ -55,8 +55,9 @@ where $$\bar{\rho}_{t}$$ is the truncated importance weight,  $$\bar{\rho}_{t} =
 
 $$\big\{ ( r_t,d_t,\rho_t, V_t^{\pi}(x_t), Q_t^{\pi}(x_t,a_t) )\big\}_{t=1,\cdots,T}$$
 
-와 $$V_{T+1}^{\pi}(x_{T+1})$$를 구한 후, $$Q^{ret}$$를 계산하게 된다. 각 계산은 batch 단위로 이루어질 수 있다. 다시 한번 정리해 보자. 
+와 $$V_{T+1}^{\pi}(x_{T+1})$$를 구한 후, $$Q^{ret}$$를 계산하게 된다. 각 계산은 batch 단위로 이루어질 수 있다.
 
+* 다시 한번 정리해 보자. 
 1. $$(r_t,d_t)$$는 old policy에 의해 생성된 data.
 2. $$\rho_t$$는 trajectory 사용된 old policy와 train대상이 되는 new policy의 action $$a_t$$에 대한 확률의 비율이다.
 3. $$\big(V_t^{\pi}(x_t), Q_t^{\pi}(x_t,a_t)\big)$$는 new policy로 예측된 (traiable variable이 포함된) 값에서 trajectory date $$(x_t,a_t)$$에 해당하는 값이다.
