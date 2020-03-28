@@ -126,14 +126,36 @@ $$
 \end{eqnarray*}
 $$
 
-* 이 $\widehat{g}_t^{acer}$가 ACER의 최종 gradient 식이 된다.
+* 이 $$\widehat{g}_t^{acer}$$가 ACER의 최종 gradient 식이 된다.
 
 -----
 
 ## Loss 계산
 
-* 
+1. Entropy Loss: $$\pi(a_t|x_t)$$는 모델이 추정한 action 별 확률 $$\pi(\cdot|x_t) = (p_{t1}, p_{t2}, \cdots, p_{tn})$$ 중에서 trajectory action $$a_t$$에 해당하는 값이다. 
+Entropy Loss는 모든 확률 $$(p_{t1}, p_{t2}, \cdots, p_{tn})$$로부터 계산할 수 있다.
 
+$$L_1 : = \sum_i p_{ti} \log p_{ti}$$
 
+2. Policy Loss, $$\widehat{g}_t^{acer}$$의 앞부분: $$V^\pi(x_t) =  \sum_{a_t} \pi(a_t|x_t) Q^\pi(x_t,a_t)$$와 $$ Q^{ret}(x_t, a_t)$$로 부터 
+advantage $$ A_t: =Q^{ret}(x_t, a_t) - V^\pi(x_t)$$를 계산할 수 있고, 이로 부터 Policy Loss를 다음과 같이 구할 수 있다.
 
+$$L_1 := \log \Big(\pi(a_t|x_t) \Big) \times \overbrace{A_t \times \min \big[ c, \rho_t(a_t) \big]}^{\text{stop gradient}} \ \ \ \leftarrow \text{ 각각이 batch-size}$$
+
+여기서도 $$A_t,\rho_t(a_t)$$의 gradient는 계산하지 않는다. 또한 이 loss는 trajectory action을 기반으로 계산되었다. 다음에 나오는 Bias Correction은 모든 action 확률에 대한 기대값을 계산한다.
+3. Bias Correction, 식(\ref{eq40})의 뒷부분: 이 계산에 사용되는 advantage 
+$$A_t^{\text{bc}} = \underbrace{Q^\pi(x_t,\cdot)}_{\text{batch-size, action-size}} - \underbrace{V\pi(x_t)}_{\text{batch-size}}$$는 broadcasting이 적용된다. 
+
+$$L_3 :=(p_{t1}, p_{t2}, \cdots, p_{tn}) \circ \big[1-\frac{c}{\rho_{t}} \big]_+  \circ A_t^{\text{bc}} \circ (\log p_{t1}, \log p_{t2}, \cdots, \log p_{tn})$$
+
+이 식은 확률이 곱해져 있으므로, 모든 성분을 합치면 기대값이 된다. OpenAI baselines 구현에는 $$L_2, L_3$$에서 $$c=10$$이 사용되었다.
+
+4. Value Loss: 
+
+$$L_4 := \frac{1}{2}\Big\Vert Q^{\mbox{\small ret}}(x_t, a_t) - Q(x_t,a_t) \Big\Vert^2$$
+
+여기서도 $$ Q^{ret}(x_t, a_t)$$의 gradient는 계산하지 않는다.
+
+5. total loss: loss weight $\lambda_1$(e.g. 0.01), $\lambda_4$(e.g. 0.5)에 대히여 
+	$$\textbf{L} := -\lambda_1 L_1 + L_2 + L_3 + \lambda_4 L_4$$
 
