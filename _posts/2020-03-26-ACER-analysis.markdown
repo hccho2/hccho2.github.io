@@ -14,7 +14,8 @@ date:   2020-03-27 20:53:34 +0900
 
 * [Sample Efficient Actor-Critic with Experience Replay](https://arxiv.org/abs/1611.01224). 2016년 11월, DeepMind.
 * Actor Critic를 포함한 Policy Gradient(PG) 모델은 기본적으로 on policy 모델이다. PG가 replay memory(또는 replay buffer, experience replay)를 사용할 수 있는 off policy가 될 수 없는 이유는 무엇일까?  
-replay memory에 쌓여 있는 action을 만들어낸 확률과 현재 train 대상이 되는 network이 만들어 내는 확률이 다르기 때문이다. train이 진행되면서 network이 update되기 때문이다. PG는 확률을 optimization해야 되는데, 현재 network이 확률이 data와 맞지 않기 때문이다.
+replay memory에 쌓여 있는 action을 만들어낸 확률과 현재 train 대상이 되는 network이 만들어 내는 확률이 다르기 때문이다. train이 진행되면서 network이 update되기 때문이다. 
+PG는 확률을 optimization해야 되는데, `data의 reward를 얻게한 action의 확률'은 현재의 `network(gradient update를 통해 이미 변했기 때문)이 만들어내는 확률'이 아니기 때문이다.
 * 이런 점 때문에, TRPO, PPO 모델에서는 data를 만들어낸 old policy와 train 대상이 되는 현재의 network의 new policy를 구분한다. (new policy는 network이 update되면 계속 변한다). 그래서 new, old policy간 기대값 변환에 필요한 important sampling weight $\rho$가 필요하다. 또한 train이 되면서 계속 변하는 new policy가 data를 만들어낸 old policy로 부터 많이 도망가지 못하게 제약을 주거나 trust region을 설정한다.
 * 이 논문에서는 PG모델이 replay memory를 사용할 수 있는 방법을 제안하고 있다. 
 * 구현 코드는 OpenAI의 [baselines](https://github.com/openai/baselines/tree/master/baselines/acer)을 참고하면 된다. 이 구현은 논문에 아주 충실하다.
