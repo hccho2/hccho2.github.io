@@ -139,7 +139,7 @@ $$
 * Entropy Loss: $$\pi(a_t|x_t)$$는 모델이 추정한 action 별 확률 $$\pi(\cdot|x_t) = (p_{t1}, p_{t2}, \cdots, p_{tn})$$ 중에서 trajectory action $$a_t$$에 해당하는 값이다. 
 Entropy Loss는 모든 확률 $$(p_{t1}, p_{t2}, \cdots, p_{tn})$$로부터 계산할 수 있다.
 
-$$L_1 : = \sum_i p_{ti} \log p_{ti}$$
+$$L_1 : = -\sum_i p_{ti} \log p_{ti}$$
 
 * Policy Loss: $$\widehat{g}_t^{acer}$$의 앞부분: $$V^\pi(x_t) =  \sum_{a_t} \pi(a_t|x_t) Q^\pi(x_t,a_t)$$와 $$ Q^{ret}(x_t, a_t)$$로 부터 
 advantage $$ A_t: =Q^{ret}(x_t, a_t) - V^\pi(x_t)$$를 계산할 수 있고, 이로 부터 Policy Loss를 다음과 같이 구할 수 있다.
@@ -153,7 +153,7 @@ $$A_t^{\text{bc}} = \underbrace{Q^\pi(x_t,\cdot)}_{\text{batch-size, action-size
 
 는 broadcasting이 적용된다. 
 
-$$L_3 :=(p_{t1}, p_{t2}, \cdots, p_{tn}) \circ \big[1-\frac{c}{\rho_{t}} \big]_+  \circ A_t^{\text{bc}} \circ (\log p_{t1}, \log p_{t2}, \cdots, \log p_{tn})$$
+$$L_3 :=\sum_{\text{성분}} \Bigg[(p_{t1}, p_{t2}, \cdots, p_{tn}) \circ \big[1-\frac{c}{\rho_{t}} \big]_+  \circ A_t^{\text{bc}} \circ (\log p_{t1}, \log p_{t2}, \cdots, \log p_{tn})\Bigg]$$
 
 이 식은 확률이 곱해져 있으므로, 모든 성분을 합치면 기대값이 된다. 참고로, OpenAI baselines 구현에는 $$L_2, L_3$$에서 $$c=10$$이 사용되었다.
 * Value Loss: 
@@ -199,7 +199,7 @@ $$
 
 $$z^* = \hat{g}^{acer}_t  - \max \Bigg\{ 0, \frac{k^T \hat{g}^{acer}_t  - \delta}{\Vert k \Vert_2^2}  \Bigg\}k$$
 
-* 이런 접근이 장점만 있는 것은 아니다. 모든 weight의 gradient에 대한 제약식이 아닌, 중간 변수 $f$에 대한 제약식이므로, 계산량과 stability의 trade off가 생긴다. 
+* 이런 접근이 장점만 있는 것은 아니다. 모든 weight의 gradient에 대한 제약식이 아닌, 중간 변수 $$f$$에 대한 제약식이므로, 계산량과 stability의 trade off가 생긴다. 
 
 $$
 \begin{eqnarray*}
