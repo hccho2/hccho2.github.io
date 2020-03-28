@@ -81,7 +81,7 @@ z_t &=& \bar{\rho}_{t} \Big[ Q^{ret}(x_t, a_t) - Q^{\pi}(x_t, a_t) \Big] + V_t^{
 
 ## Policy Gradient
 
-* 이제 policy graident 식에 관해 살펴보자. $\pi$가 train 대상이 되는 new policy이고, $\mu$가 data를 생성한 old policy이다. 다음 2개의 식이 주어져 있다.
+* 이제 policy graident 식에 관해 살펴보자. $\pi$가 train 대상이 되는 new policy이고, $\mu$가 data를 생성한 old policy이다. 다음 2개의 식을 살펴보자.
 $$
 \begin{eqnarray}
 & & \mathbb{E}_{a_t \sim \mu} \Big[\rho_t \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \\
