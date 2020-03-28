@@ -173,7 +173,7 @@ $$\textbf{L} := -\lambda_1 L_1 + L_2 + L_3 + \lambda_4 L_4$$
 * 일반적(TRPO)으로 모든 weight에 대한 $$\textbf{L}$$의 gradient에 제약을 하는데, ACER에서는 action 확률 $$f:= \pi(\cdot|x_t)$$에 대한 gradient에 제약을 주어 trust region을 적용한다. 
 Loss $$\textbf{L}$$에서 $$f$$성분이 없는 $$L_4$$를 제외하고 gradient를 $$\hat{g}^{acer}_t$$를 다음과 같이 정의한다.
 
-$$\hat{g}^{acer}_t: = \nabla_{f}\big(-\lambda_1 L_1 + L_2 + L_3\big) \ \ \ \  \Big(= \frac{\partial{\textbf{L}}}{{\partial f}} \Big)$$
+$$\hat{g}^{acer}_t: = \nabla_{f}\big(-\lambda_1 L_1 + L_2 + L_3\big)  \Big(= \frac{\partial{\textbf{L}}}{{\partial f}} \Big)$$
 
 $$\hat{g}^{acer}_t$$가 Loss minimization을 수행할 gradient인데, 이 $$\hat{g}^{acer}_t$$에 가까우면서 제약식을 만족하는 새로운 gradient $$z$$을 찾는 것이 우리가 하고자 하는 바이다.
 
