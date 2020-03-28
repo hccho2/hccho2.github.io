@@ -73,6 +73,8 @@ y &=& x^4 + 4      \nonumber \\
 
 $$\eqref{eq0001)$$과 식$$(\eqref{eq0002})$$  $$\eqref{eq0001)$$과 식$$(\eqref{eq0002})$$
 
+
+수식에 reference 달기 성공: 
 $$
 \begin{align}
     g &= \int_a^b f(x)dx \label{eq1}\tag{1} \\
