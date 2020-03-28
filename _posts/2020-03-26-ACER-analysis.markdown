@@ -81,11 +81,28 @@ z_t &=& \bar{\rho}_{t} \Big[ Q^{ret}(x_t, a_t) - Q^{\pi}(x_t, a_t) \Big] + V_t^{
 
 ## Policy Gradient
 
+* 이제 policy graident 식에 관해 살펴보자. $\pi$가 train 대상이 되는 new policy이고, $\mu$가 data를 생성한 old policy이다. 다음 2개의 식이 주어져 있다.
+$$
+\begin{eqnarray}
+& & \mathbb{E}_{a_t \sim \mu} \Big[\rho_t \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \\
+&=&  \mathbb{E}_{a_t \sim \mu} \Big[(\rho_t-c+c) \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \nonumber\\
+&=&  \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \mu} \Big[(\rho_t-c) \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \nonumber\\
+&=& \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \pi} \Big[\frac{\rho_t-c}{\rho} \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] 
+\end{eqnarray}
+$$
+이 식과 다음은 식은 같은 식이다.
+$$
+\begin{eqnarray}
+g_t^{\mbox{\small marg}}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) Q^\pi(x_t, a_t)  
+ + \underset{a \sim \pi}{\mathbb{E}} \left( \left[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \right]_+ \hspace{-3mm}
+\nabla_{\theta}  \log \pi_{\theta}(a| x_t) Q^\pi(x_t, a) \right). 
+\end{eqnarray}
+$$
 
-
-
-
-
+*위의 2개 식이 같은 이유를 $$\rho < c$$인 경우와 $$\rho \geq c$$인 경우로 나누어 생각해 보면 알 수 있다.
+1. $$\rho_t < c$$인 경우: 뒷부분이 없어진다. $$ \rho = \bar{\rho}_{t} $$. 이렇게 되면, 두 식은 일치한다.
+2. $$\rho_t \geq c$$인 경우: $$\rho_{t}  = c + \rho_t - c = \bar{\rho}_{t}  + \big( \rho_{t} - c \big)$$.  여기서 $$\big( \rho_{t} - c \big)$$를 $$\rho_{t}$$로 나누어 주고, 
+old policy에서 new policy에 대한 기대값으로 전환하면 앞 식의 뒷부분이 된다. 따라서, 이 경우에도 두 식은 일치한다.
 
 
 
