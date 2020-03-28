@@ -16,6 +16,7 @@ date:   2020-03-27 20:53:34 +0900
 ## 개요
 
 * [Sample Efficient Actor-Critic with Experience Replay](https://arxiv.org/abs/1611.01224). 2016년 11월, DeepMind.
+* simulation cost를 줄이기 위한 방안으로 sample efficiency를 높여야 한다. 그 방법 중에 하나가 replay memory(또는 replay buffer, experience replay)를 사용하는 것이다.
 * Actor Critic를 포함한 Policy Gradient(PG) 모델은 기본적으로 on policy 모델이다. PG가 replay memory(또는 replay buffer, experience replay)를 사용할 수 있는 off policy가 될 수 없는 이유는 무엇일까?  
 replay memory에 쌓여 있는 action을 만들어낸 확률과 현재 train 대상이 되는 network이 만들어 내는 확률이 다르기 때문이다. train이 진행되면서 network이 update되기 때문이다. 
 PG는 확률을 optimization해야 되는데, `data의 reward를 얻게한 action의 확률`은 현재의 `network이 만들어내는 확률`이 아니기 때문이다(gradient update를 통해 이미 변했기 때문).
