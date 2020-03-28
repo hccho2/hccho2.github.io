@@ -142,7 +142,7 @@ advantage $$ A_t: =Q^{ret}(x_t, a_t) - V^\pi(x_t)$$를 계산할 수 있고, 이
 $$L_1 := \log \Big(\pi(a_t|x_t) \Big) \times \overbrace{A_t \times \min \big[ c, \rho_t(a_t) \big]}^{\text{stop gradient}} \ \ \ \leftarrow \text{ 각각이 batch-size}$$
 
 여기서도 $$A_t,\rho_t(a_t)$$의 gradient는 계산하지 않는다. 또한 이 loss는 trajectory action을 기반으로 계산되었다. 다음에 나오는 Bias Correction은 모든 action 확률에 대한 기대값을 계산한다.
-3. Bias Correction, 식(\ref{eq40})의 뒷부분: 이 계산에 사용되는 advantage 
+3. Bias Correction, $$\widehat{g}_t^{acer}$$의 뒷부분: 이 계산에 사용되는 advantage 
 $$A_t^{\text{bc}} = \underbrace{Q^\pi(x_t,\cdot)}_{\text{batch-size, action-size}} - \underbrace{V\pi(x_t)}_{\text{batch-size}}$$는 broadcasting이 적용된다. 
 
 $$L_3 :=(p_{t1}, p_{t2}, \cdots, p_{tn}) \circ \big[1-\frac{c}{\rho_{t}} \big]_+  \circ A_t^{\text{bc}} \circ (\log p_{t1}, \log p_{t2}, \cdots, \log p_{tn})$$
