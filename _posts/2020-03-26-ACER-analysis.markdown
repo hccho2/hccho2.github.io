@@ -157,7 +157,7 @@ $$L_3 :=(p_{t1}, p_{t2}, \cdots, p_{tn}) \circ \big[1-\frac{c}{\rho_{t}} \big]_+
 $$L_4 := \frac{1}{2}\Big\Vert Q^{ret}(x_t, a_t) - Q(x_t,a_t) \Big\Vert^2$$
 
 여기서도 $$ Q^{ret}(x_t, a_t)$$의 gradient는 계산하지 않는다.
-* total loss: loss weight $$\lambda_1$$(e.g. 0.01), $$\lambda_4$$(e.g. 0.5)에 대히여 
+* total loss: loss weight $$\lambda_1$$(e.g. 0.01), $$\lambda_4$$(e.g. 0.5)에 대하여 
 
 $$\textbf{L} := -\lambda_1 L_1 + L_2 + L_3 + \lambda_4 L_4$$
 
