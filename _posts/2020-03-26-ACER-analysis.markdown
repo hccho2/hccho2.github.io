@@ -106,6 +106,7 @@ $$
 old policy에서 new policy에 대한 기대값으로 전환하면 앞 식의 뒷부분이 된다. 따라서, 이 경우에도 두 식은 일치한다.
 
 * off policy 환경에서 계산을 위하여 $$Q^\pi$$를 $$Q^{ret}$$로 대체하여 $$\widehat{g}_t^{marg}$$을 다음과 같이 정의한다.
+
 $$
 \begin{eqnarray*}
 \widehat{g}_t^{marg}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t\vert x_t) Q^{ret}(x_t, a_t) 
