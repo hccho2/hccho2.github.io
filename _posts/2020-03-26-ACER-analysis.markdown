@@ -169,7 +169,7 @@ $$\textbf{L} := -\lambda_1 L_1 + L_2 + L_3 + \lambda_4 L_4$$
 
 ## Trust Region
 
-* Trust Region을 적용하지 않는다면, $\textbf{L}$을 최소화하기 위해, $\frac{\partial \textbf{L}}{\partial f}$를 계산하여 Gradient Descent를 적용하면 된다. 그런데, Trust Region을 적용한다면, $\frac{\partial \textbf{L}}{\partial f}$와 가깝지만, 어느 정도 조건을 만족하는 vector를 구해 대신하는 방식을 사용한다.
+* Trust Region을 적용하지 않는다면, $$\textbf{L}$$을 최소화하기 위해, $$\frac{\partial \textbf{L}}{\partial f}$$를 계산하여 Gradient Descent를 적용하면 된다. 그런데, Trust Region을 적용한다면, $$\frac{\partial \textbf{L}}{\partial f}$$와 가깝지만, 어느 정도 조건을 만족하는 vector를 구해 대신하는 방식을 사용한다.
 * old policy 대신 moving average policy를 사용한다.  $$\Rightarrow$$ `polyak(러시아 수학자) averaging라고 부르기도 한다. moving average policy로 부터의 확률을 $$f_{\text{pol}}$$이라 하자.
 * 일반적(TRPO)으로 모든 weight에 대한 $$\textbf{L}$$의 gradient에 제약을 하는데, ACER에서는 action 확률 $$f:= \pi(\cdot|x_t)$$에 대한 gradient에 제약을 주어 trust region을 적용한다. 
 Loss $$\textbf{L}$$에서 $$f$$성분이 없는 $$L_4$$를 제외하고 gradient를 $$\hat{g}^{acer}_t$$를 다음과 같이 정의한다.
