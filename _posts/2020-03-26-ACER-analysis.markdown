@@ -45,7 +45,7 @@ $$Q^{ret}(x_t, a_t) = r_t + \gamma  \bar{\rho}_{t+1} \Big[ Q^{ret}(x_{t+1}, a_{t
 
 where $$\bar{\rho}_{t}$$ is the truncated importance weight,  $$\bar{\rho}_{t} = \min \{c, \rho_t \}$$ with $$\rho_{t} = \frac{\pi(a_t\vert x_t) }{ \mu(a_t\vert x_t) }$$.
 
-* on policy 에서는 data가 train 대상인 현재의 network으로부터 생성되었어야 하는데, old policy의 data로 train을 할 수가 없다. 그래서 old policy로 생성된 $r_t$값을 train 대상이 되는 현재의 network이 예측한 $\Q^\pi, V^\pi$로 보정해서 total gain $G_t$에 해당하는 $Q^{\ret}$를 계산한다.
+* on policy 에서는 data가 train 대상인 현재의 network으로부터 생성되었어야 하는데, old policy의 data로 train을 할 수가 없다. 그래서 old policy로 생성된 $$r_t$$값을 train 대상이 되는 현재의 network이 예측한 $$\Q^\pi, V^\pi$$로 보정해서 total gain $$G_t$$에 해당하는 $$Q^{\ret}$$를 계산한다.
 
 * Retrace is an off-policy, return-based algorithm which has low variance and is proven to converge (in the tabular case) to the value function of the target policy for any behavior policy.
 * 좀 더 구체적으로, Retrace를 계산해 보자. trajectory $$(r_t,D_t,\rho_t, V_t^{\pi}, Q_t^{\pi})_{t=1,\cdots,T}$$와 $$V_{T+1}^{\pi}$$이 주어져 있다고 하자. 
