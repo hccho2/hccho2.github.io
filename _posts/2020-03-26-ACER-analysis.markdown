@@ -192,7 +192,13 @@ $$
 \end{aligned}
 $$
 
+* 제약식에서 $k$와 $$z$$의 내적이 $$\delta$$(e.g 1)보다 작다는 의미를 생각해 보자. $$k$$는 KL Divergence의 $$f$$에 대한 gradient이다. 내적 값 $$k^T z$$가 일정한 값 $$\delta$$보다 작다는 것은 KL Divergence를 커지지 않게 하라는 의미이다. 
+이런 조건을 만족하는 $$z$$중에서 $$\hat{g}^{acer}_t$$에 가까운 $$z$$를 찾아 $$\hat{g}^{acer}_t$$를 대체하는 gradient로 $$z$$를 사용하려 한다.
+이 optimization 문제는 KKT condition을 이용하면, 다음과 같은 closed form solution $$z^*$$를 가진다.
 
+$$z^* = \hat{g}^{acer}_t  - \max \Bigg\{ 0, \frac{k^T \hat{g}^{acer}_t  - \delta}{\Vert k \Vert_2^2}  \Bigg\}k$$
+
+* 이런 접근이 장점만 있는 것은 아니다. 모든 weight의 gradient에 대한 제약식이 아닌, 중간 변수 $f$에 대한 제약식이므로, 계산량과 stability의 trade off가 생긴다. 
 
 
 
