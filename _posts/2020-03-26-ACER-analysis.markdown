@@ -104,7 +104,7 @@ $$
 2. $$\rho_t \geq c$$인 경우: $$\rho_{t}  = c + \rho_t - c = \bar{\rho}_{t}  + \big( \rho_{t} - c \big)$$.  여기서 $$\big( \rho_{t} - c \big)$$를 $$\rho_{t}$$로 나누어 주고, 
 old policy에서 new policy에 대한 기대값으로 전환하면 앞 식의 뒷부분이 된다. 따라서, 이 경우에도 두 식은 일치한다.
 
-* off policy 환경에서 계산을 위하여 $Q^\pi$를 $Q^{ret}$로 대체하여 $\widehat{g}_t^{marg}$을 다음과 같이 정의한다.
+* off policy 환경에서 계산을 위하여 $$Q^\pi$를 $Q^{ret}$$로 대체하여 $$\widehat{g}_t^{marg}$$을 다음과 같이 정의한다.
 $$
 \begin{eqnarray*}
 \widehat{g}_t^{marg}}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) Q^{ret}(x_t, a_t) 
@@ -112,7 +112,7 @@ $$
 \nabla_{\theta}  \log \pi_{\theta}(a| x_t) Q^\pi(x_t, a) \Bigg).
 \end{eqnarray*}
 $$
-* 다시 Gain에 해당하는 부분을 Advantage로 변환하여 $\widehat{g}_t^{acer}}$를 정의한다.
+* 다시 Gain에 해당하는 부분을 Advantage로 변환하여 $$\widehat{g}_t^{acer}}$$를 정의한다.
 $$
 \begin{eqnarray*}
 \widehat{g}_t^{acer}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) \overbrace{\big[Q^{ret}(x_t, a_t) - V^\pi(x_t)\big]}^{\text{stop gradient}}  \\
