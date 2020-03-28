@@ -45,9 +45,9 @@ $$Q^{ret}(x_t, a_t) = r_t + \gamma  \bar{\rho}_{t+1} \Big[ Q^{ret}(x_{t+1}, a_{t
 
 where $$\bar{\rho}_{t}$$ is the truncated importance weight,  $$\bar{\rho}_{t} = \min \{c, \rho_t \}$$ with $$\rho_{t} = \frac{\pi(a_t\vert x_t) }{ \mu(a_t\vert x_t) }$$.
 
-* on policy 에서는 data가 neu policy로 생성되어야 하는데, old data로 train을 계속할 수가 없다. 그래서 old policy로 생성된 $r_t$값을 사용하는 보정해주기 위한 작업이 필요하다.
+* on policy 에서는 data가 train 대상인 현재의 network으로부터 생성되었어야 하는데, old policy의 data로 train을 할 수가 없다. 그래서 old policy로 생성된 $r_t$값을 train 대상이 되는 현재의 network이 예측한 $\Q^\pi, V^\pi$로 보정해서 total gain $G_t$에 해당하는 $Q^{\ret}$를 계산한다.
 
-*Retrace is an off-policy, return-based algorithm which has low variance and is proven to converge (in the tabular case) to the value function of the target policy for any behavior policy.
+* Retrace is an off-policy, return-based algorithm which has low variance and is proven to converge (in the tabular case) to the value function of the target policy for any behavior policy.
 * 좀 더 구체적으로, Retrace를 계산해 보자. trajectory $$(r_t,D_t,\rho_t, V_t^{\pi}, Q_t^{\pi})_{t=1,\cdots,T}$$와 $$V_{T+1}^{\pi}$$이 주어져 있다고 하자. 
 다음 계산은 batch 단위로 이루어지며, 각 time step에서 action $$a_t$$는 여러 action이 아니고, tratjectory에 있는 action이다. 그리고 $$\rho_t$$에 사용되는 old policy는 trajectory 생성에 사용된 확률이다. 
 $$Q_t^{\pi}, V_t^{\pi}$$에는 모델의 추정치(즉, new policy에 의한 추정)이다. 즉 trainable variable이 포함되어 있다.  OpenAI baselines 구현에는 $$c=1$$이 사용되었다.
