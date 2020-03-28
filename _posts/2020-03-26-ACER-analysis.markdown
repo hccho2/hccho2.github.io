@@ -177,7 +177,7 @@ $$\hat{g}^{acer}_t: = \nabla_{f}\big(-\lambda_1 L_1 + L_2 + L_3\big) \ \ \ \  \B
 
 $$\hat{g}^{acer}_t$$가 Loss minimization을 수행할 gradient인데, 이 $$\hat{g}^{acer}_t$$에 가까우면서 제약식을 만족하는 새로운 gradient $$z$$을 찾는 것이 우리가 하고자 하는 바이다.
 
-*$$f$$에 대한 KL divergence $$D_{KL}(f_{\text{pol}} || f)$$의 gradient를 $$k$$로 정의하자.
+* $$f$$에 대한 KL divergence $$D_{KL}(f_{\text{pol}} || f)$$의 gradient를 $$k$$로 정의하자.
 
 $$k := \nabla_f D_{KL}(f_{\text{pol}} || f)$$
 
