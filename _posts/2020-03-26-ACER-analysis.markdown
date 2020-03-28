@@ -126,8 +126,13 @@ $$
 \end{eqnarray*}
 $$
 
+* 이 $\widehat{g}_t^{acer}$가 ACER의 최종 gradient 식이 된다.
 
+-----
 
+## Loss 계산
+
+* 
 
 
 
