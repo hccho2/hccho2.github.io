@@ -161,3 +161,18 @@ $$L_4 := \frac{1}{2}\Big\Vert Q^{ret}(x_t, a_t) - Q(x_t,a_t) \Big\Vert^2$$
 
 $$\textbf{L} := -\lambda_1 L_1 + L_2 + L_3 + \lambda_4 L_4$$
 
+-----
+
+## Trust Region
+
+
+
+
+
+
+
+
+
+
+
+
