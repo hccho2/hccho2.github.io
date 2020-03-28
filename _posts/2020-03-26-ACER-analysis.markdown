@@ -215,7 +215,7 @@ $$k = - \frac{ f_{\text{pol}}}{ f}$$
 
 ======================
 
-## 구현 코드 분석해
+## 구현 코드 분석
 
 * OpenAI의 [baselines](https://github.com/openai/baselines/tree/master/baselines/acer)의 ACER 코드를 분석해 보자.
 * 
