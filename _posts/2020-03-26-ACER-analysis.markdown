@@ -202,8 +202,8 @@ $$z^* = \hat{g}^{acer}_t  - \max \Bigg\{ 0, \frac{k^T \hat{g}^{acer}_t  - \delta
 
 $$
 \begin{eqnarray*}
-\frac{\partial \textbf{L}}{\partial \theta} &=& \frac{\partial \textbf{L}}{\partial f} \frac{\partial f}{\partial \theta} + \lambda_4\frac{\partial \textbf{L}}{\partial \theta} \\
-&\approx& z^* \frac{\partial f}{\partial \theta} + \lambda_4\frac{\partial \textbf{L}}{\partial \theta}
+\frac{\partial \textbf{L}}{\partial \theta} &=& \frac{\partial \textbf{L}}{\partial f} \frac{\partial f}{\partial \theta} + \lambda_4\frac{\partial L_4}{\partial \theta} \\
+&\approx& z^* \frac{\partial f}{\partial \theta} + \lambda_4\frac{\partial L_4}{\partial \theta}
 \end{eqnarray*}
 $$
 
