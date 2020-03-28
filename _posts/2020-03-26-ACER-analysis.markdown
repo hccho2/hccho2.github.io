@@ -209,7 +209,7 @@ $$
 $$
 
 * 참고로 $$k = \nabla_f D_{KL}(f_{\text{pol}} || f)$$를 계산해 보자. KL Divergence는 $$(\log f_{\text{pol}} - \log f)$$를 확률 $$f_{\text{pol}}$$로 기대값을 계산하면 된다. 
-따라서 $$(\log f_{\text{pol}} - \log f)$$과 $$f_{\text{pol}}$$의 내적(scalar)을 $$f$$(의 각 성분 으)로 미분하면,
+따라서 $$(\log f_{\text{pol}} - \log f)$$과 $$f_{\text{pol}}$$의 내적(scalar)을 $$f$$로 (정확히는, $$f$$의 각 성분 으로) 미분하면,
 
 $$k = - \frac{ f_{\text{pol}}}{ f}$$
 
