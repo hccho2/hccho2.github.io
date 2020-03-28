@@ -136,6 +136,7 @@ $$
 Entropy Loss는 모든 확률 $$(p_{t1}, p_{t2}, \cdots, p_{tn})$$로부터 계산할 수 있다.
 
 $$L_1 : = \sum_i p_{ti} \log p_{ti}$$
+
 2. Policy Loss, $$\widehat{g}_t^{acer}$$의 앞부분: $$V^\pi(x_t) =  \sum_{a_t} \pi(a_t|x_t) Q^\pi(x_t,a_t)$$와 $$ Q^{ret}(x_t, a_t)$$로 부터 
 advantage $$ A_t: =Q^{ret}(x_t, a_t) - V^\pi(x_t)$$를 계산할 수 있고, 이로 부터 Policy Loss를 다음과 같이 구할 수 있다.
 
