@@ -90,10 +90,10 @@ $$
 &=& \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \pi} \Big[\frac{\rho_t-c}{\rho} \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] 
 \end{eqnarray}
 $$
-이 식과 다음은 식은 같은 식이다.
+이 식과 다음 식은 같은 식이다.
 $$
 \begin{eqnarray}
-g_t^{\mbox{\small marg}}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) Q^\pi(x_t, a_t)  
+g_t^{marg}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) Q^\pi(x_t, a_t)  
  + \underset{a \sim \pi}{\mathbb{E}} \left( \left[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \right]_+ \hspace{-3mm}
 \nabla_{\theta}  \log \pi_{\theta}(a| x_t) Q^\pi(x_t, a) \right). 
 \end{eqnarray}
