@@ -130,7 +130,7 @@ $$
 \end{eqnarray*}
 $$
 
-* 이 $$\widehat{g}_t^{acer}$$가 ACER의 최종 gradient 식이 된다.
+* 이 $$\widehat{g}_t^{acer}$$가 ACER의 Trust Region을 적용하기 전의 gradient 식이 된다.
 
 -----
 
