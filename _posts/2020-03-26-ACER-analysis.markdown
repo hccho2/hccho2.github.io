@@ -175,7 +175,7 @@ Loss $$\textbf{L}$$에서 $$f$$성분이 없는 $$L_4$$를 제외하고 gradient
 
 $$\hat{g}^{acer}_t: = \nabla_{f}\big(-\lambda_1 L_1 + L_2 + L_3\big) \ \ \ \  \Big(= \frac{\partial \textbf{L}}{{\partial f}} \Big)$$
 
-$$\hat{g}^{acer}_t: = \nabla_{f}\big(-\lambda_1 L_1 + L_2 + L_3\big)$$
+$$\ \ \ \  \Big(= \frac{\partial \textbf{L}}{{\partial f}} \Big)$$
 
 $$\hat{g}^{acer}_t$$가 Loss minimization을 수행할 gradient인데, 이 $$\hat{g}^{acer}_t$$에 가까우면서 제약식을 만족하는 새로운 gradient $$z$$을 찾는 것이 우리가 하고자 하는 바이다.
 
