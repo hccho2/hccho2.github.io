@@ -49,9 +49,20 @@ $$Q^{ret}(x_t, a_t) = r_t + \gamma  \bar{\rho}_{t+1} \Big[ Q^{ret}(x_{t+1}, a_{t
 where $$\bar{\rho}_{t}$$ is the truncated importance weight,  $$\bar{\rho}_{t} = \min \{c, \rho_t \}$$ with $$\rho_{t} = \frac{\pi(a_t\vert x_t) }{ \mu(a_t\vert x_t) }$$.
 
 * Retrace is an off-policy, return-based algorithm which has low variance and is proven to converge (in the tabular case) to the value function of the target policy for any behavior policy.
-* 좀 더 구체적으로, Retrace를 계산해 보자. trajectory $$(r_t,D_t,\rho_t, V_t^{\pi}, Q_t^{\pi})_{t=1,\cdots,T}$$와 $$V_{T+1}^{\pi}$$이 주어져 있다고 하자. 
-다음 계산은 batch 단위로 이루어지며, 각 time step에서 action $$a_t$$는 여러 action이 아니고, tratjectory에 있는 action이다. 그리고 $$\rho_t$$에 사용되는 old policy는 trajectory 생성에 사용된 확률이다. 
-$$Q_t^{\pi}, V_t^{\pi}$$에는 모델의 추정치(즉, new policy에 의한 추정)이다. 즉 trainable variable이 포함되어 있다.  OpenAI baselines 구현에는 $$c=1$$이 사용되었다.
+* 좀 더 구체적으로, Retrace 계산과정을 살펴보자. trajectory $$\{(x_t, a_t, r_t, d_t)\}_{t=1,\cdots,T}$$와 $$x_{T+1}$$이 있어야 한다. 이로 부터 
+
+$$\big\{ ( r_t,d_t,\rho_t, V_t^{\pi}(x_t), Q_t^{\pi}(x_t,a_t) )\big\}_{t=1,\cdots,T}$$
+
+와 $$V_{T+1}^{\pi}(x_{T+1})$$를 구한 후, $$Q^{\mbox{\small ret}}$$를 계산하게 된다. 각 계산은 batch 단위로 이루어질 수 있다. 다시 한번 정리해 보자. 
+
+$$
+\begin{enumerate}
+	\item $(r_t,d_t)$는 old policy에 의해 생성된 data.
+	\item $\rho_t$는 trajectory 사용된 old policy와 train대상이 되는 new policy의 action $a_t$에 대한 확률의 비율이다.
+	\item $\big(V_t^{\pi}(x_t), Q_t^{\pi}(x_t,a_t)\big)$는 new policy로 예측된 (traiable variable이 포함된) 값에서 trajectory date $(x_t,a_t)$에 해당하는 값이다.
+\end{enumerate}$$
+
+참고로, OpenAI baselines 구현에서, $$\bar{\rho}_{t} = \min \left\{c, \rho_t \right\}$$에서 $$c=1$$이 사용되었다.
 
 $$
 \begin{eqnarray*}
