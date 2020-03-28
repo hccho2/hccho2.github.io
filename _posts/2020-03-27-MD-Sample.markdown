@@ -79,4 +79,4 @@ $$
     a &= b + c \label{eq2}\tag{2}
 \end{align}
 $$
-See (\ref{eq1}) and (\ref{eq2})
+See $$(\ref{eq1})$$ and $$(\ref{eq2})$$
