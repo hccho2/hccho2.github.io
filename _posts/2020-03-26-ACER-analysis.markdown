@@ -109,7 +109,7 @@ $$
 \begin{eqnarray*}
 \widehat{g}_t^{marg}}  &=& \bar{\rho}_{t}  \nabla_{\theta} \log \pi_{\theta}(a_t| x_t) Q^{ret}(x_t, a_t) 
   + \underset{a \sim \pi}{\mathbb{E}} \Bigg( \Big[\frac{\rho_{t}(a) - c}{\rho_{t}(a)} \Big]_+ \hspace{-3mm}
-\nabla_{\theta}  \log \pi_{\theta}(a| x_t) Q^\pi(x_t, a) \Bigg). \label{eq39}
+\nabla_{\theta}  \log \pi_{\theta}(a| x_t) Q^\pi(x_t, a) \Bigg).
 \end{eqnarray*}
 $$
 * 다시 Gain에 해당하는 부분을 Advantage로 변환하여 $\widehat{g}_t^{acer}}$를 정의한다.
