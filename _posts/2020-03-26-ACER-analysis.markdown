@@ -6,7 +6,7 @@ date:   2020-03-27 20:53:34 +0900
 
 # ACER를 분석해 보자!!!
 
-> Policy Gradient는 기본적으로 on policy algorithm이다. PPO, ACER 등은 off policy train이 가능할 수 있는 모델을 제시하고 있다. 여기서는 ACER를 모델과 구현에 대해서 살펴보고자 한다. 
+> Policy Gradient는 기본적으로 on policy algorithm이다. TRPO, PPO, ACER 등은 off policy train이 가능할 수 있는 모델을 제시하고 있다. 여기서는 ACER 모델과 구현에 대해서 살펴보고자 한다. 모델에 대한 설명을 구현을 고려한 관점에서 하고자 한다.
 
 
 * [Sample Efficient Actor-Critic with Experience Replay](https://arxiv.org/abs/1611.01224). 2016년 11월, DeepMind.
