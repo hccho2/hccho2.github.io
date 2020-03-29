@@ -1,8 +1,7 @@
 ---
 layout: post
-disqus:
-  comments: true  # boolean type, the global switch for posts comments.
-  shortname: 'https-hccho2-github-io' 
+comments: true  # boolean type, the global switch for posts comments.
+shortname: 'https-hccho2-github-io' 
 title:  "Sample MARKDOWN!"
 date:   2020-03-27 14:53:34 +0900
 categories: jekyll update
