@@ -249,6 +249,6 @@ with tf.control_dependencies([train_op]):
 
 ## Reference
 
-* [딥러닝 정리 자료](https://drive.google.com/drive/folders/1S6z-RHqVN_zcX1ygKr9r0NOodWq37NZh)
+* [딥러닝 정리 자료](https://drive.google.com/open?id=16olGwVvk_smtgopmuUtouOf1ad1RGpIf)
 
 
