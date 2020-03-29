@@ -235,7 +235,9 @@ with tf.variable_scope("acer_model", custom_getter=custom_getter, reuse=True):
 	polyak_model = policy(nbatch=nbatch, nsteps=nsteps, observ_placeholder=train_ob_placeholder, sess=sess)  # exponential weighted model
 {% endhighlight %}
 
+
 	- 이렇게 구현된 `ema_apply_op`는 optimization을 수행하는 `train_op`와 `tf.control_dependencies`로 묶으면 된다.
+
 
 {% highlight ruby %}
 with tf.control_dependencies([train_op]):
