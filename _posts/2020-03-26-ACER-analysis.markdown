@@ -219,6 +219,7 @@ $$k = - \frac{ f_{\text{pol}}}{ f}$$
 
 * OpenAI의 [baselines](https://github.com/openai/baselines/tree/master/baselines/acer)의 ACER 코드(Tensorflow)를 분석해 보자.
 * [acer.py](https://github.com/openai/baselines/blob/master/baselines/acer/acer.py)에 핵심적인 부분이 다 구현되어 있다.
+* OpenAI의 ACER 구현은 discrete action space만 구현되어 있다. continuous action 인 "Pendulum-V0" 같은 env는 작동하지 않는다.
 
 ### Polyak Average
 {% highlight ruby %}
