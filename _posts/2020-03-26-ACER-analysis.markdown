@@ -158,7 +158,7 @@ $$L_3 :=\sum_{\text{성분}} \Bigg[(p_{t1}, p_{t2}, \cdots, p_{tn}) \circ \big[1
 이 식은 확률이 곱해져 있으므로, 모든 성분을 합치면 기대값이 된다. 참고로, OpenAI baselines 구현에는 $$L_2, L_3$$에서 $$c=10$$이 사용되었다.
 * Value(Critic) Loss: 
 
-$$L_4 := \frac{1}{2}\Big\Vert Q^{ret}(x_t, a_t) - Q(x_t,a_t) \Big\Vert^2$$
+$$L_4 := \frac{1}{2}\Big\Vert Q^{ret}(x_t, a_t) - Q^\pi(x_t,a_t) \Big\Vert^2$$
 
 여기서도 $$ Q^{ret}(x_t, a_t)$$의 gradient는 계산하지 않는다.
 * total loss: loss weight $$\lambda_1$$(e.g. 0.01), $$\lambda_4$$(e.g. 0.5)에 대하여 
