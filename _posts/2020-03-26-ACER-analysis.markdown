@@ -220,6 +220,7 @@ $$k = - \frac{ f_{\text{pol}}}{ f}$$
 * OpenAI의 [baselines](https://github.com/openai/baselines/tree/master/baselines/acer)의 ACER 코드를 분석해 보자.
 * [acer.py](https://github.com/openai/baselines/blob/master/baselines/acer/acer.py)에 핵심적인 부분이 다 구현되어 있다.
 
+### Polyak Average
 {% highlight ruby %}
 ema = tf.train.ExponentialMovingAverage(alpha)  # alpha=0.99
 ema_apply_op = ema.apply(params)
