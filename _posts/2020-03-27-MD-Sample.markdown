@@ -14,11 +14,11 @@ categories: jekyll update
 ---------------
 
 
-MathJax online test: http://jsbin.com/zimuxulawu/edit?html,output
+[MathJax online test](http://jsbin.com/zimuxulawu/edit?html,output)
 
 github.io  참고: https://github.com/lilianweng/lil-log
 
-댓글 기능 추가하기: https://devmjun.github.io/archive/addComments
+[댓글 기능 추가하기](https://devmjun.github.io/archive/addComments)
 
 You’ll find this post in your `_posts` directory. Go ahead and edit it and re-build the site to see your changes. You can rebuild the site in many different ways, but the most common way is to run `jekyll serve`, which launches a web server and auto-regenerates your site when a file is updated.
 
