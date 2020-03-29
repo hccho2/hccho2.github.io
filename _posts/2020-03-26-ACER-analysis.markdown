@@ -1,9 +1,5 @@
 ---
 layout: post
-disqus:
-  comments: true  # boolean type, the global switch for posts comments.
-  shortname: 'https-hccho2-github-io' 
-comments: true
 title:  "ACER 뽀개기"
 date:   2020-03-27 20:53:34 +0900
 ---
