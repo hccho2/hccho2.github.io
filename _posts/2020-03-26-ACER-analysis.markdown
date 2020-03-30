@@ -229,11 +229,11 @@ with tf.variable_scope('acer_model', reuse=tf.AUTO_REUSE):
 	step_model = policy(nbatch=nenvs, nsteps=1, observ_placeholder=step_ob_placeholder, sess=sess)
 	train_model = policy(nbatch=nbatch, nsteps=nsteps, observ_placeholder=train_ob_placeholder, sess=sess)
 
-	with tf.variable_scope("acer_model", custom_getter=custom_getter, reuse=True):
-		polyak_model = policy(nbatch=nbatch, nsteps=nsteps, observ_placeholder=train_ob_placeholder, sess=sess)  # exponential weighted model
+with tf.variable_scope("acer_model", custom_getter=custom_getter, reuse=True):
+	polyak_model = policy(nbatch=nbatch, nsteps=nsteps, observ_placeholder=train_ob_placeholder, sess=sess)  # exponential weighted model
 {% endhighlight %}
 
-3개의 policy를 생성한다. `reuse=True` 설정되어있고, `polyak_model`은 `tf.train.ExponentialMovingAverage`로 만들어진다.
+3개의 policy를 생성한다(episode 생성, train, exponential average). `reuse=True` 설정되어있고, `polyak_model`은 `tf.train.ExponentialMovingAverage`로 만들어진다.
 
 ### Polyak Average
 {% highlight ruby %}
