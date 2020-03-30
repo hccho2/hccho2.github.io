@@ -1,3 +1,2 @@
-git add --all
-git commit -am.
-git push origin +master
+git fetch --all
+git reset --hard origin/master
