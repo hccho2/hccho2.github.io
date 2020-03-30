@@ -28,6 +28,13 @@ baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  hccho
 
+# 댓글 관련 부분
+comments:
+  provider               : "disqus" # false (default), "disqus", "discourse", "facebook", "staticman", "staticman_v2", "utterances", "custom"
+  disqus:
+    shortname            : heecheolcho #
+
+
 # Build settings
 theme: minima
 plugins:
