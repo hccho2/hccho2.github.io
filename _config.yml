@@ -31,7 +31,7 @@ github_username:  hccho
 # 댓글 관련 부분
 url: https://hccho2.github.io/
 disqus:
-    shortname: 'https-hccho2-github-io'
+    shortname: https-hccho2-github-io
 
 
 
