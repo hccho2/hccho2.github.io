@@ -182,7 +182,7 @@ $$\hat{g}^{acer}_t$$가 Loss minimization을 수행할 gradient인데, 이 $$\ha
 
 * $$f$$에 대한 KL divergence $$D_{KL}(f_{\text{pol}} \Vert f)$$의 gradient를 $$k$$로 정의하자.
 
-$$k := \nabla_f D_{KL}(f_{\text{pol}} || f) \ \ \  \leftarrow \text{(batch-size,action-size)} $$
+$$k := \nabla_f D_{KL}(f_{\text{pol}} \Vert f) \ \ \  \leftarrow \text{(batch-size,action-size)} $$
 
 * 이제 다음과 같은 optimization 식을 살펴보자.
 
@@ -210,7 +210,7 @@ $$
 \end{eqnarray*}
 $$
 
-* 참고로 $$k = \nabla_f D_{KL}(f_{\text{pol}} || f)$$를 계산해 보자. KL Divergence는 $$(\log f_{\text{pol}} - \log f)$$를 확률 $$f_{\text{pol}}$$로 기대값을 계산하면 된다. 
+* 참고로 $$k = \nabla_f D_{KL}(f_{\text{pol}} \Vert f)$$를 계산해 보자. KL Divergence는 $$(\log f_{\text{pol}} - \log f)$$를 확률 $$f_{\text{pol}}$$로 기대값을 계산하면 된다. 
 따라서 $$(\log f_{\text{pol}} - \log f)$$과 $$f_{\text{pol}}$$의 내적(scalar)을 $$f$$로 (정확히는, $$f$$의 각 성분 으로) 미분하면,
 
 $$k = - \frac{ f_{\text{pol}}}{ f}$$
