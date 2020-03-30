@@ -220,6 +220,20 @@ $$k = - \frac{ f_{\text{pol}}}{ f}$$
 * OpenAI의 [baselines](https://github.com/openai/baselines/tree/master/baselines/acer)의 ACER 코드(Tensorflow)를 분석해 보자.
 * [acer.py](https://github.com/openai/baselines/blob/master/baselines/acer/acer.py)에 핵심적인 부분이 다 구현되어 있다.
 * OpenAI의 ACER 구현은 discrete action space만 구현되어 있다. continuous action 인 "Pendulum-V0" 같은 env는 작동하지 않는다.
+* OpenAI baselines는 MPI를 사용한다. Windows환경에서는 단순 pip만으로 mpi4py가 설치되지 않는다.
+
+### Policy Network
+{% highlight ruby %}
+with tf.variable_scope('acer_model', reuse=tf.AUTO_REUSE):
+	# policy = common/policies.py PolicyWithValue
+	step_model = policy(nbatch=nenvs, nsteps=1, observ_placeholder=step_ob_placeholder, sess=sess)
+	train_model = policy(nbatch=nbatch, nsteps=nsteps, observ_placeholder=train_ob_placeholder, sess=sess)
+
+	with tf.variable_scope("acer_model", custom_getter=custom_getter, reuse=True):
+		polyak_model = policy(nbatch=nbatch, nsteps=nsteps, observ_placeholder=train_ob_placeholder, sess=sess)  # exponential weighted model
+{% endhighlight %}
+
+3개의 policy를 생성한다. `reuse=True` 설정되어있고, `polyak_model`은 `tf.train.ExponentialMovingAverage`로 만들어진다.
 
 ### Polyak Average
 {% highlight ruby %}
