@@ -34,7 +34,7 @@ plugins:
   - jekyll-feed
   
 
-comment:
+comments:
   type: disqus
   shortname: heecheolcho
 
