@@ -34,9 +34,8 @@ plugins:
   - jekyll-feed
   
 
-comments:
-  type: disqus
-  shortname: heecheolcho
+disqus: true
+disqus_shortname: heecheolcho
 
 # Exclude from processing.
 # The following items will not be processed, by default.
