@@ -33,7 +33,10 @@ theme: minima
 plugins:
   - jekyll-feed
   
-disqus-shortname: hccho2-github-io
+
+comment:
+  type: disqus
+  shortname: hccho2-github-io
 
 # Exclude from processing.
 # The following items will not be processed, by default.
