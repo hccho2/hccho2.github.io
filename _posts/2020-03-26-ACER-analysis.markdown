@@ -93,7 +93,7 @@ $$
 & & \mathbb{E}_{a_t \sim \mu} \Big[\rho_t \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \\
 &=&  \mathbb{E}_{a_t \sim \mu} \Big[(\rho_t-c+c) \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \nonumber\\
 &=&  \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \mu} \Big[(\rho_t-c) \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] \nonumber\\
-&=& \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \pi} \Big[\frac{\rho_t-c}{\rho} \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] 
+&=& \mathbb{E}_{a_t \sim \mu} \Big[c \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] + \mathbb{E}_{a_t \sim \pi} \Big[\frac{\rho_t-c}{\rho_t} \nabla_{\theta}\log \pi_\theta (a_t|x_t)Q^\pi(x_t, a_t)\Big] 
 \end{eqnarray*}
 $$
 
