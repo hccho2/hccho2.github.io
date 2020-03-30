@@ -268,5 +268,5 @@ with tf.control_dependencies([train_op]):
 ## Reference
 
 * [딥러닝 정리 자료](https://drive.google.com/open?id=16olGwVvk_smtgopmuUtouOf1ad1RGpIf){:target="_blank"}
-* PPO, TRPO는 on policy인가, off policy인가? <https://github.com/openai/baselines/issues/316?target=_blank>
+* PPO, TRPO는 on policy인가, off policy인가? <https://github.com/openai/baselines/issues/316>{:target="_blank"}
 
