@@ -285,9 +285,13 @@ train은 on-policy train 1번 후, off policy를 random하게 몇번 하는 방�
 
 
 ## BreakoutDeterministic-v4 구현
-* [Code]
-* RMSProp보다 Adam Optimizer를 사용해야, train이 잘된다.
-* learning_rate = 2.5e-4에서 시작하여, 단계적으로 감소.
+* [Code](https://github.com/hccho2/RL-GYM/blob/master/08_14_acer_breakout.py)
+* OpenAI baselines 코드를 simplel하게 수정
+* MPI 대신 multiprocessing으로 구현
+* Optimizer를 RMSProp 대신, Adam 사용
+* process 8개 사용.
+* learning_rate = 0.00025에서 출발하여 점차적으로 감소
+* 2시40분 정도 train하면 적절. 좀 더 train하면 4시간 정도까지.
 
 ## Reference
 
