@@ -272,9 +272,9 @@ for acer.steps in range(0, total_timesteps, nbatch): #nbatch samples, 1 on_polic
 			acer.call(on_policy=False)  # no simulation steps in this
 {% endhighlight %}
 
-train은 on-policy train 1번 후, off policy를 random하게 몇번 하는 방식으로 이루어진다
-on-policy train: data를  replay buffer에 쌓고, 그 data로 train한다.
-off-policy train: replay buffer에서 random하게 data를 뽑아서 train한다.
+train은 on-policy train 1번 후, off policy를 random하게 몇번 하는 방식으로 이루어진다.
+	- on-policy train: data를  replay buffer에 쌓고, 그 data로 train한다.
+	- off-policy train: replay buffer에서 random하게 data를 뽑아서 train한다.
 
 
 ## Reference
