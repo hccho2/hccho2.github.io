@@ -287,7 +287,7 @@ train은 on-policy train 1번 후, off policy를 random하게 몇번 하는 방�
 ## BreakoutDeterministic-v4 구현
 * [Code]
 * RMSProp보다 Adam Optimizer를 사용해야, train이 잘된다.
-
+* learning_rate = 2.5e-4에서 시작하여, 단계적으로 감소.
 
 ## Reference
 
