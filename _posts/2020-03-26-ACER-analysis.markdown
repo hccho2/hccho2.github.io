@@ -278,6 +278,17 @@ train은 on-policy train 1번 후, off policy를 random하게 몇번 하는 방�
   > * off-policy train: replay buffer에서 random하게 data를 뽑아서 train한다.
 
 
+## CartPole-v1 구현
+* [Code](https://github.com/hccho2/RL-GYM/blob/master/08_13_acer_cartpole.py){:target="_blank"}
+* OpenAI baselines 코드는 여러 환경에서 작동하도록 설계되어, 알고리즘을 분석하기에는 좀 복잡하다.
+* baselines에서 ACER부분만 추출. MPI로 구현된 부분을 `multiprocessing`로 대체.
+
+
+## CartPole-v1 구현
+* [Code]
+* RMSProp보다 Adam Optimizer를 사용해야, train이 잘된다.
+
+
 ## Reference
 
 * [딥러닝 정리 자료](https://drive.google.com/open?id=16olGwVvk_smtgopmuUtouOf1ad1RGpIf){:target="_blank"}
