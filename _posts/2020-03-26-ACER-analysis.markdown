@@ -284,7 +284,7 @@ train은 on-policy train 1번 후, off policy를 random하게 몇번 하는 방�
 * baselines에서 ACER부분만 추출. MPI로 구현된 부분을 `multiprocessing`로 대체.
 
 
-## CartPole-v1 구현
+## BreakoutDeterministic-v4 구현
 * [Code]
 * RMSProp보다 Adam Optimizer를 사용해야, train이 잘된다.
 
