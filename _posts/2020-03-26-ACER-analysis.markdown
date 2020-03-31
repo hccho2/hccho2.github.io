@@ -262,7 +262,17 @@ with tf.control_dependencies([train_op]):
 
 `train_op`가 실행된 후, `ema_apply_op`가 실행되면서 `polyak_model`이 update된다.
 
+### On/Off Policy Train
+{% highlight ruby %}
+for acer.steps in range(0, total_timesteps, nbatch): #nbatch samples, 1 on_policy call and multiple off-policy calls
+	acer.call(on_policy=True)
+	if replay_ratio > 0 and buffer.has_atleast(replay_start):
+		n = np.random.poisson(replay_ratio)
+		for _ in range(n):
+			acer.call(on_policy=False)  # no simulation steps in this
+{% endhighlight %}
 
+train은 on-policy train 1번 후, off policy를 random하게 몇번 하는 방식으로 이루어진다
 
 
 ## Reference
