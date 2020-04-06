@@ -11,7 +11,7 @@ date:   2020-03-27 20:53:34 +0900
 
 # ACER를 분석해 보자!!!
 
-> Policy Gradient는 기본적으로 on policy algorithm이다. TRPO, PPO는 on policy model이지만, off policy적인 요소를 반영했다. 여기서는 off policy 모델인 ACER의 구조와 구현에 대해서 살펴보자. 특히, 모델에 대한 설명을 구현을 고려한 관점에서 하고자 한다. 단순함을 위해, discrete action space만 고려한다.
+> Policy Gradient는 기본적으로 on policy algorithm이다. TRPO, PPO는 on policy model이지만, off policy적인 요소를 반영했다. 여기서는 off policy 모델인 ACER의 구조와 구현에 대해서 살펴본다. 특히, 모델에 대한 설명을 구현을 고려한 관점에서 하고자 한다. 단순함을 위해, discrete action space만 고려한다.
 
 -----
 
