@@ -153,7 +153,7 @@ $$L_1 := \log \Big(\pi(a_t|x_t) \Big) \times \overbrace{A_t \times \min \big[ c,
 
 $$A_t^{\text{bc}} = \underbrace{Q^\pi(x_t,\cdot)}_{\text{batch-size, action-size}} - \underbrace{V^\pi(x_t)}_{\text{batch-size}}$$
 
-는 broadcasting이 적용된다. 
+는 broadcasting을 적용하기 위해 $$V^\pi(x_t)$$를 reshape해야 한다. 
 
 $$L_3 :=\sum_{\text{성분}} \Bigg[(p_{t1}, p_{t2}, \cdots, p_{tn}) \circ \big[1-\frac{c}{\rho_{t}} \big]_+  \circ A_t^{\text{bc}} \circ (\log p_{t1}, \log p_{t2}, \cdots, \log p_{tn})\Bigg]$$
 
