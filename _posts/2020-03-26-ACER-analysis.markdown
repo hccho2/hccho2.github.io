@@ -195,8 +195,9 @@ $$
 \end{aligned}
 $$
 
-<p align="center"><img src="assets/images/acer_kkt.png"></p>
-
+![Illustration of a reinforcement learning problem]({{ '/assets/images/acer_kkt.png' | relative_url }})
+{: style="width: 70%;" class="center"}
+*Fig. 1. 영역에 포함되면서 $$\hat{g}^{acer}_t$$에 가장 가까운 벡터를 찾는 문제이다.  $$k^T\big(\hat{g}^{acer}_t -tk\big)=\delta$$인 $$t$$를 찾으면 된다. *
 
 * 제약식에서 $$k$$와 $$z$$의 내적이 $$\delta$$(e.g. 1)보다 작다는 의미를 생각해 보자. $$k$$는 KL Divergence의 $$f$$에 대한 gradient이다. 내적 값 $$k^T z$$가 일정한 값 $$\delta$$보다 작다는 것은 KL Divergence를 커지지 않게 하라는 의미이다. 
 이런 조건을 만족하는 $$z$$중에서 $$\hat{g}^{acer}_t$$에 가까운 $$z$$를 찾아 $$\hat{g}^{acer}_t$$를 대체하는 gradient로 $$z$$를 사용하려 한다.
