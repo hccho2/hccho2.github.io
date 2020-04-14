@@ -203,7 +203,7 @@ $$z^* = \hat{g}^{acer}_t  - \max \Bigg\{ 0, \frac{k^T \hat{g}^{acer}_t  - \delta
 
 ![KL Divergence Optimization]({{ '/assets/images/acer_kkt.png' | relative_url }})
 {: style="width: 50%;" class="center"}
-*Fig. 1. 영역에 포함되면서 $$\hat{g}^{acer}_t$$에 가장 가까운 벡터를 찾는 문제이다.  $$k^T\big(\hat{g}^{acer}_t -tk\big)=\delta$$인 $$t$$를 찾으면 된다. *
+*Fig. 1. 영역에 포함되면서 $$\hat{g}^{acer}_t$$에 가장 가까운 벡터를 찾는 문제이다.  $$k^T\big(\hat{g}^{acer}_t + tk\big)=\delta$$인 $$t$$를 찾으면 된다. *
 
 * 이런 접근이 장점만 있는 것은 아니다. 모든 weight의 gradient에 대한 제약식이 아닌, 중간 변수 $$f$$에 대한 제약식이므로, 계산량과 stability의 trade off가 생긴다. 
 
