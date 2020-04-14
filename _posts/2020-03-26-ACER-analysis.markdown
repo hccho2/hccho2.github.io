@@ -200,6 +200,7 @@ $$
 이 optimization 문제는 KKT condition을 이용하면, 다음과 같은 closed form solution $$z^*$$를 가진다.
 
 $$z^* = \hat{g}^{acer}_t  - \max \Bigg\{ 0, \frac{k^T \hat{g}^{acer}_t  - \delta}{\Vert k \Vert_2^2}  \Bigg\}k \ \ \ \leftarrow\text{max값은 scalar값이므로, batch-size 크기.}$$
+
 ![Illustration of a reinforcement learning problem]({{ '/assets/images/acer_kkt.png' | relative_url }})
 {: style="width: 50%;" class="center"}
 *Fig. 1. 영역에 포함되면서 $$\hat{g}^{acer}_t$$에 가장 가까운 벡터를 찾는 문제이다.  $$k^T\big(\hat{g}^{acer}_t -tk\big)=\delta$$인 $$t$$를 찾으면 된다. *
