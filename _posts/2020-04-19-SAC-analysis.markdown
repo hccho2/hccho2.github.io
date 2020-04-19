@@ -19,7 +19,7 @@ SAC는 Continuous Action Space를 대상으로 하는 모델이다. SAC를 discr
 ## 개요
 
 * [Tuomas Haarnoja, Aurick Zhou, Pieter Abbeel, Sergey Levine. Soft Actor-Critic: Off-Policy Maximum Entropy Deep Reinforcement Learning with a Stochastic Actor](https://arxiv.org/abs/1801.01290)
-* [Tuomas Haarnoja, Aurick Zhou, Kristian Hartikainen, George Tucker, Sehoon Ha, Jie Tan, Vikash Kumar, Henry Zhu, Abhishek Gupta, Pieter Abbeel, Sergey Levine. Soft Actor-Critic Algorithms and Applications](https://bair.berkeley.edu/blog/2017/10/06/soft-q-learning/)
+* [Tuomas Haarnoja, Aurick Zhou, Kristian Hartikainen, George Tucker, Sehoon Ha, Jie Tan, Vikash Kumar, Henry Zhu, Abhishek Gupta, Pieter Abbeel, Sergey Levine. Soft Actor-Critic Algorithms and Applications](https://arxiv.org/abs/1812.05905)
 * SAC for Discrete Action Space: [Soft Actor-Critic for Discrete Action Settings](https://arxiv.org/abs/1910.07207)
 
 ## Reference
