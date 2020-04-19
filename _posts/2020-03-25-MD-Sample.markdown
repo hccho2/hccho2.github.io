@@ -17,7 +17,7 @@ categories: jekyll update
 
 [MathJax online test](http://jsbin.com/zimuxulawu/edit?html,output)
 
-github.io  참고: https://github.com/lilianweng/lil-log
+github.io  참고: <https://github.com/lilianweng/lil-log>{:target="_blank"}
 
 [댓글 기능 추가하기](https://devinlife.com/howto%20github%20pages/blog-disqus/)
 
