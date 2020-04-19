@@ -25,5 +25,5 @@ SAC는 Continuous Action Space를 대상으로 하는 모델이다. SAC를 discr
 ## Reference
 
 * [딥러닝 정리 자료](https://drive.google.com/open?id=16olGwVvk_smtgopmuUtouOf1ad1RGpIf){:target="_blank"}
-
+* https://bair.berkeley.edu/blog/2017/10/06/soft-q-learning/
 
