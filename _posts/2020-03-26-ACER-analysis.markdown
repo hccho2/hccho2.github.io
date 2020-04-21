@@ -149,7 +149,7 @@ $$L_1 : = -\sum_i p_{ti} \log p_{ti}$$
 * Policy Loss: $$\widehat{g}_t^{acer}$$의 앞부분: $$V^\pi(x_t) =  \sum_{a} \pi(a|x_t) Q^\pi(x_t,a)$$와 $$ \overbrace{Q^{ret}(x_t, a_t)}^{a_t\text{는 trajectory action}}$$로 부터 
 advantage $$A_t: =\underbrace{Q^{ret}(x_t, a_t)}_{\text{batch-size}} - \underbrace{V^\pi(x_t)}_{\text{batch-size}}$$를 계산할 수 있고, 이로 부터 Policy Loss를 다음과 같이 구할 수 있다.
 
-$$L_1 := \log \Big(\pi(a_t|x_t) \Big) \times \overbrace{A_t \times \min \big[ c, \rho_t(a_t) \big]}^{\text{stop gradient}} \ \ \ \leftarrow \text{ 각각이 batch-size}$$
+$$L_2 := \log \Big(\pi(a_t|x_t) \Big) \times \overbrace{A_t \times \min \big[ c, \rho_t(a_t) \big]}^{\text{stop gradient}} \ \ \ \leftarrow \text{ 각각이 batch-size}$$
 
 여기서도 $$A_t,\rho_t(a_t)$$의 gradient는 계산하지 않는다. 또한 이 loss는 trajectory action을 기반으로 계산되었다. 다음에 나오는 Bias Correction은 모든 action 확률에 대한 기대값을 계산한다.
 * Bias Correction: $$\widehat{g}_t^{acer}$$의 뒷부분: 이 계산에 사용되는 advantage 
