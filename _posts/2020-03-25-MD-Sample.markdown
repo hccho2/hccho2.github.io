@@ -91,10 +91,11 @@ $$
 $$
 See $$(\ref{eq1})$$ and $$(\ref{eq2})$$
 
+$$
 \color{red}{
 \begin{align}
      g &= \int_a^b f(x)dx  \label{eq3}\tag{3}\\
      a &= b + c \label{eq4} \tag{4}
-\end{align}}
+\end{align}}$$
 See $$(\ref{eq3})$$ and $$(\ref{eq4})$$
 
