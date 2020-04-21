@@ -42,7 +42,7 @@ $$
 -----
 ## Replay Memory
 * replay memory를 사용하는 대표적인 모델이 DQN이다. DQN은 episode의 각 step이 하나의 data가 되고, 이것들이 모여서 replay momory를 이룬다.
-* ACER는 episode의 $$k$$-step개의 state, action, reward, done 등이 모여 하나의 data를 이룬다. $$k$$길이의 data들이 replay momory를 이룬다. mini-batch는 k길이의 data를 n개 선택하는 방식이다.
+* ACER는 episode의 $$k$$-step개의 state, action, reward, done 등이 모여 하나의 data를 이룬다. $$k$$길이의 data들이 replay momory를 이룬다. mini-batch는 $$k$$길이의 data를 n개 선택하는 방식이다.
 
 ## Retrace
 
