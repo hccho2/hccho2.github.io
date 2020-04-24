@@ -151,14 +151,14 @@ $$\begin{eqnarray}
 
 $$\begin{eqnarray*}
 & &\max_{\pi_0, \dots, \pi_T} \mathbb{E} \Bigg[ \sum_{t=0}^T r(s_t, a_t)\Bigg] \\
-\text{s.t. } & &  \E\Big[-\log \pi_t(a_t|s_t) \Big] \geq \mathcal{H}_0,  \ \ \forall t
+\text{s.t. } & &  \mathbb{E}\Big[-\log \pi_t(a_t|s_t) \Big] \geq \mathcal{H}_0,  \ \ \forall t
 \end{eqnarray*}$$	
 	
 * 이 문제를 dual problem으로 변환 후, time step $t=T, T-1, T-2, \cdots$ 순서의 backward로 전개하여 최종적인 minimization 문제의 objective function을 얻게 된다.
 	
 $$\begin{eqnarray}
-J(\alpha) &=& \E_{a_t\sim \pi_t} \Big[ -\alpha \log \pi_t(a_t \vert s_t) - \alpha \mathcal{H}_0 \Big] \label{eq47}\\
-					&=& \alpha \overbrace{\E_{a_t\sim \pi_t} \Big[ - \log \pi_t(a_t \vert s_t) - \mathcal{H}_0 \Big]}^{\text{stop gradient}}\\
+J(\alpha) &=& \mathbb{E}_{a_t\sim \pi_t} \Big[ -\alpha \log \pi_t(a_t \vert s_t) - \alpha \mathcal{H}_0 \Big] \label{eq47}\\
+					&=& \alpha \overbrace{\mathbb{E}_{a_t\sim \pi_t} \Big[ - \log \pi_t(a_t \vert s_t) - \mathcal{H}_0 \Big]}^{\text{stop gradient}}\\
 &\approx& -\alpha \log \pi_t(\bar{a}_t \vert s_t) - \alpha \mathcal{H}_0 \label{eq48}
 \end{eqnarray}$$
 
