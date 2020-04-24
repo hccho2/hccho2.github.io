@@ -186,6 +186,13 @@ $$A_T = \min_{\alpha_T \geq 0} \max _{\pi_T} \E \Big[ r(s_T, a_T) + \alpha_T\big
 
 * 이 식을 직관적으로 이해해 볼 수 있다. constraint 즉 $$-\log\pi_T(a_T \vert s_T) \geq \mathcal{H}_0$$ 가 만족되지 않으면, 양수 $$\alpha_T$$를 무한히 키워서 전체 값이 $$-\infty$$로 가게 되는데, 이렇게 해서는 원하는 최대화가 되지 않는다. 따라서, 최대화를 이루기 위해서는 constraint가 만족될 수 밖에 없다.
 
+## Soft Actor Critic with Discrete Action Space
+* Discrete Action Space에서는 sampling을 통해 근사적으로 기대값을 계산하지 않고, 기대값을 직접 계산할 수 있다. 식(\ref{eq49}), (\ref{eq46}), (\ref{eq48})을 원래대로 식(\ref{eq44}), (\ref{eq45}), (\ref{eq47})로 계산할 수 있다. 따라서, sampling이 필요없고, replay buffer에 있는 data만 사용하면 된다.
+* Discrete Soft Actor Critic 구현은 DQN 구현과 유사한 측면이 많다.
+
+
+
+
 
 ## Reference
 
