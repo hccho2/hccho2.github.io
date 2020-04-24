@@ -27,6 +27,8 @@ date:   2020-04-19 15:53:34 +0900
 
 PPO![PPO test]({{ '/assets/images/pendulum-ppo.gif' | relative_url }})  SAC![SAC test]({{ '/assets/images/pendulum-sac.gif' | relative_url }})
 
+<p align="center"><img src="/assets/images/pendulum-ppo.gif"> <img src="/assets/images/pendulum-sac.gif"> </p>
+
 
 ## Reference
 
