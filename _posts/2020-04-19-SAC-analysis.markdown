@@ -29,12 +29,7 @@ date:   2020-04-19 15:53:34 +0900
 PPO            |  SAC
 :-------------------------:|:-------------------------:
 ![]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="left"}  |  ![]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="right"}
-
-PPO![PPO test]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="left"}  SAC![SAC test]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="right"}
-
-<p align="center"><img src="/assets/images/pendulum-ppo.gif" width="200" height="200"> <img src="/assets/images/pendulum-sac.gif" width="200" height="200"> </p>
-
-
+*PPO가 SAC보다 안정적이다. SAC모델 결과가 좀 더 불안정해 보이는 이유는, SAC 모델이 가능한 random action을 추구하면서도 임무(task)를 성공시키는 것이 목적이기 때문이다.
 ## Reference
 
 * [딥러닝 정리 자료](https://drive.google.com/open?id=16olGwVvk_smtgopmuUtouOf1ad1RGpIf){:target="_blank"}

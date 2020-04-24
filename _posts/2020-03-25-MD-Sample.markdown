@@ -102,5 +102,14 @@ See $$(\ref{eq3})$$ and $$(\ref{eq4})$$
 $$\color{blue}{\text{안녕}}$$
 안녕하세요
 
+PPO![PPO test]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="left"}  SAC![SAC test]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="right"}
 
 <p align="center"><img src="/assets/images/pendulum-ppo.gif" width="200" height="200"> <img src="/assets/images/pendulum-sac.gif" width="200" height="200"> </p>
+
+
+PPO            |  SAC
+:-------------------------:|:-------------------------:
+![]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="left"}  |  ![]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="right"}
+
+
+
