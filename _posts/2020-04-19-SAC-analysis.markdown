@@ -122,7 +122,7 @@ J_{\pi}(\phi)  &=&  \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a
 * $$u$$의 pdf를 $$\mu(u\vert s)$$라 하자.  우리의 경우는 $$u=\tanh^{-1}(a)$$의 jocobian($$\frac{du}{da}$$)이 대각행렬이기 때문에, $$\tanh$$의 역함수를 미분해야 하는 $$\frac{du}{da}$$보다는 $$\tanh$$를 바로 미분하는 $$\frac{da}{du}$$ 미분해서 역수를 취하는 것이 낫다.
 
 $$\begin{eqnarray*}
-\frac{da}{du} &=& \diag(1-\tanh^2(u))  \\
+\frac{da}{du} &=& \text{diag}(1-\tanh^2(u))  \\
 \pi(a\vert s) &=& \mu(u\vert s) \left| \det\left( \frac{du}{da} \right) \right|  \\
 							&=& \mu(u\vert s) \left| \det\left( \frac{da}{du} \right) \right|^{-1}  \\
 \log \pi(a\vert s) &=& \log \mu(u\vert s) - \sum_i \log \big( 1-\tanh^2(u_i) \big)
