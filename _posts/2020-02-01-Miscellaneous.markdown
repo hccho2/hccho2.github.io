@@ -3,7 +3,7 @@ layout: post
 comments: true  # boolean type, the global switch for posts comments.
 shortname: 'https-hccho2-github-io' 
 title:  "잡동사니 자료들"
-date:   2020-01-10 15:53:34 +0900
+date:   2020-02-01 15:53:34 +0900
 ---
 
 ========
