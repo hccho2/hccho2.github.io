@@ -206,7 +206,7 @@ $$A_T = \min_{\alpha_T \geq 0} \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alp
 
 PPO            |  SAC
 :-------------------------:|:-------------------------:
-![]({{ '/assets/images/bipedalwalker-ppo.gif' | relative_url }}){: style="width: 70%;" class="center"}  |  ![]({{ '/assets/images/bipedalwalker-ppo.gif' | relative_url }}){: style="width: 70%;" class="center"}
+![]({{ '/assets/images/bipedalwalker-ppo.gif' | relative_url }}){: style="width: 70%;" class="center"}  |  ![]({{ '/assets/images/bipedalwalker-sac.gif' | relative_url }}){: style="width: 70%;" class="center"}
 
 
 ## Reference
