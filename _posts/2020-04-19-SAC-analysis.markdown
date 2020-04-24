@@ -70,14 +70,25 @@ H(p) &=& \mathbb{E}_{x\sim p} \Big[ -\log p(x) \Big], \nonumber\\
 * Value Loss: Value Network $$\V_\psi$$ training.
 
 $$\begin{eqnarray}
-J_V(\psi) = \E_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(\V_\psi(s_t) - \E_{\bar{a}_t\sim\pi_\phi}\big[{\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}
+J_V(\psi) = \E_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(\V_\psi(s_t) - \E_{\bar{a}_t\sim\pi_\phi}\big[{\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}\tag{41}
 \end{eqnarray}$$
 
 ![]({{ '/assets/images/sac_1.png' | relative_url }}){: style="width: 100%;" class="center"}
 
 *그림: Value Loss: $$\bar{a}_t$$는 replay buffer에서의 action이 아니고, policy network에서 새롭게 생성한 action이다. 참고로 $$s_t$$ 대신 $$s_{t+1}$$를 이용해서 value loss를 구할 수도 있다.
 
+* 식($$\ref{eq41}$$)에서 기대값을 직접 계산하기 어렵기 때문에 policy network $$\pi_\phi$$에서 sampling을 통해 action $$\bar{a}_t$$를 뽑아서 계산하면 된다.
 
+$$  \E_{\bar{a}_t\sim\pi_\phi}\big[\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)\big] \ \rightarrow \ \Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t) $$
+
+* Q-Function Loss: Q-Network($$\Q_{\theta}$$) training.
+$$
+\begin{eqnarray}
+J_Q(\theta)  &=& \E_{(s_t,a_t)\sim\mathcal{D}} \Bigg[ \frac{1}{2} \bigg( \Q_\theta(s_t,a_t) - \underbrace{\hat{\Q}(s_t,a_t)}_{\text{stop gradient}} \bigg)^2 \Bigg]  \ \ \text{with}  \nonumber \\
+\hat{\Q}(s_t,a_t) &:=& r(s_t,a_t) + \gamma \E_{s_{t+1}\sim p} \Big [ \V_{\bar{\psi}} (s_{t+1})  \Big] \ \ \leftarrow {p: \text{transition probability.}} \label{eq42}
+\end{eqnarray}$$
+
+* next state $$s_{t+1}$$은 $$s_{t+1}\sim p$$로 표시되어 있지만, 구현에서는 replay buffer에 있는 $$s_{t+1}$$이다. $$\hat{\Q}(s_t,a_t)$$의 gradient는 계산되지 않아야 한다. 
 
 
 
