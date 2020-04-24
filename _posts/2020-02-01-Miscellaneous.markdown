@@ -6,7 +6,8 @@ title:  "잡동사니 자료들"
 date:   2020-02-01 15:53:34 +0900
 ---
 
-========
+> * 여러가지 딥러닝 공부자료
+> * 금융수학, 선형대수, 수치해석 등등
 
 # 딥러닝 자료
 * [딥러닝 공부 자료](https://drive.google.com/open?id=16olGwVvk_smtgopmuUtouOf1ad1RGpIf)
