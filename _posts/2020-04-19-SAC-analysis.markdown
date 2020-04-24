@@ -58,7 +58,7 @@ $$\max\ \big[Q + \alpha (-\log p)\big] \quad \quad \text{or}  \quad \quad \min\ 
 $$\begin{eqnarray}
 H(p) &=& \mathbb{E}_{x\sim p} \Big[ -\log p(x) \Big], \nonumber\\
  V(s_t) &=&  \mathbb{E}_{a_t\sim\pi} \big[ Q(s_t,a_t) \big] +\alpha H \big(\pi(\cdot | s_t)\big)  \nonumber\\
-				&=&  \mathbb{E}_{a_t\sim\pi} \big[ Q(s_t,a_t) -\alpha \log \pi(a_t \vert s_t) \big] \ \  \text{for } \alpha > 0, \label{eq43}\\
+				&=&  \mathbb{E}_{a_t\sim\pi} \big[ Q(s_t,a_t) -\alpha \log \pi(a_t \vert s_t) \big] \ \  \text{for } \alpha > 0, \label{eq43}\tag{1}\\
 Q(s_t,a_t) &=&  \mathbb{E}_{s_{t+1}\sim p, a_{t+1} \sim \pi} \Bigg[ r(s_t, a_t, s_{t+1}) + \gamma \Big( Q(s_{t+1}, a_{t+1}) + \alpha H(\pi(\cdot | s_{t+1}))  \Big) \Bigg]\nonumber \\
 &=&  \mathbb{E}_{s_{t+1}\sim p} \Bigg[ r(s_t, a_t, s_{t+1}) + \gamma V(s_{t+1}) \Bigg] \nonumber
 \end{eqnarray}$$
@@ -71,7 +71,7 @@ Q(s_t,a_t) &=&  \mathbb{E}_{s_{t+1}\sim p, a_{t+1} \sim \pi} \Bigg[ r(s_t, a_t, 
 * Value Loss: Value Network $$V_\psi$$ training.
 
 $$\begin{eqnarray}
-J_V(\psi) = \mathbb{E}_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(V_\psi(s_t) - \mathbb{E}_{\bar{a}_t\sim\pi_\phi}\big[{Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}\tag{1}
+J_V(\psi) = \mathbb{E}_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(V_\psi(s_t) - \mathbb{E}_{\bar{a}_t\sim\pi_\phi}\big[{Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}\tag{2}
 \end{eqnarray}$$
 
 ![]({{ '/assets/images/sac_1.png' | relative_url }}){: style="width: 70%;" class="center"}
@@ -86,7 +86,7 @@ $$  \mathbb{E}_{\bar{a}_t\sim\pi_\phi}\big[Q_\theta(s_t, \bar{a}_t) - \alpha\log
 $$
 \begin{eqnarray}
 J_Q(\theta)  &=& \mathbb{E}_{(s_t,a_t)\sim\mathcal{D}} \Bigg[ \frac{1}{2} \bigg( Q_\theta(s_t,a_t) - \underbrace{\hat{Q}(s_t,a_t)}_{\text{stop gradient}} \bigg)^2 \Bigg]  \ \ \text{with}  \nonumber \\
-\hat{Q}(s_t,a_t) &:=& r(s_t,a_t) + \gamma \mathbb{E}_{s_{t+1}\sim p} \Big [ V_{\bar{\psi}} (s_{t+1})  \Big] \ \ \leftarrow {p: \text{transition probability.}} \label{eq42}\tag{2}
+\hat{Q}(s_t,a_t) &:=& r(s_t,a_t) + \gamma \mathbb{E}_{s_{t+1}\sim p} \Big [ V_{\bar{\psi}} (s_{t+1})  \Big] \ \ \leftarrow {p: \text{transition probability.}} \label{eq42}\tag{3}
 \end{eqnarray}$$
 
 * next state $$s_{t+1}$$은 $$s_{t+1}\sim p$$로 표시되어 있지만, 구현에서는 replay buffer에 있는 $$s_{t+1}$$이다. $$\hat{Q}(s_t,a_t)$$의 gradient는 계산되지 않아야 한다. 
@@ -104,8 +104,8 @@ $$J_{\pi}(\phi)  = \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ D_{KL} \bigg( \pi_{
 SAC에서는 $$\exp Q(s_t,\cdot)$$를 normalization($$Z_\theta(s_t)$$)해서 확률분포로 간주한다. 그래서 new policy와 $$\exp Q(s_t, \cdot)$$의 KL-Divergence가 최소화 되도록 한다. 실제 계산에서는 normalization term인 $$Z_\theta(s_t)$$는 무시해도 된다.
 
 $$\begin{eqnarray}
-J_{\pi}(\phi)  &=&  \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a}_t\sim \pi_{\phi}} \Big[ \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big]  \Bigg] \label{eq44}\tag{3} \\
-&\approx& \mathbb{E}_{s_t \sim \mathcal{D}} \Big [  \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big] \label{eq49} \tag{4}
+J_{\pi}(\phi)  &=&  \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a}_t\sim \pi_{\phi}} \Big[ \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big]  \Bigg] \label{eq44}\tag{4} \\
+&\approx& \mathbb{E}_{s_t \sim \mathcal{D}} \Big [  \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big] \label{eq49} \tag{5}
 \end{eqnarray}$$
 
 * 이 식에서도 기대값 계산은 Value Loss와 동일하게 sampling을 통해 처리한다. 그런데, sampling된 $$\bar{a}_t$$에 관한 backpropagation의 미분이 필요하기 때문에 Policy Network의 distribution에서 reparameterization trick이 필요하다.
