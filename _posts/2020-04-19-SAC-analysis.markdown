@@ -127,6 +127,7 @@ $$\begin{eqnarray*}
 							&=& \mu(u\vert s) \left| \det\left( \frac{da}{du} \right) \right|^{-1}  \\
 \log \pi(a\vert s) &=& \log \mu(u\vert s) - \sum_i \log \big( 1-\tanh^2(u_i) \big)
 \end{eqnarray*}$$
+
 * 여기서 $$\mu(u\vert s)$$의 각 action 성분이 uncorrelated되어 있다면, 확률은 각 action 성분 확률의 곱이 된다. 따러서,
 
 $$\log \mu(u\vert s) = \sum _i \log \mu(u_i \vert s)$$
