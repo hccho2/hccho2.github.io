@@ -6,7 +6,7 @@ title:  "Soft Actor Critic 분석"
 date:   2020-04-19 15:53:34 +0900
 ---
 
-========
+> Off Polycy Train을 통해, Sample Efficiency를 높혀보자.
 
 
 # Soft Actor Critic 분석
