@@ -115,7 +115,7 @@ J_{\pi}(\phi)  &=&  \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a
 * 먼저 일반적인 확률 변수와 확률밀도 함수에서의 change of variables에 대해 살펴보자. 확률 변수 $$X$$의 pdf가 $$f_X(x)$$라 하자. 이때 확률변수 $$Y:=g(X)$$의 pdf를 구하는 과정이 change of variables이다. 확률 변수 $$Y$$의 pdf $$f_Y(y)$$는 다음과 같이 주어진다.
  
  $$\begin{eqnarray*}
- f_Y(y) &=&   f_X\big(g^{-1}(y)\big) \overbrace{\left| \frac{d}{dy} g^{-1}(y) \right|}^{\text{\scriptsize Jacobian determinant의 절대값}} \\
+ f_Y(y) &=&   f_X\big(g^{-1}(y)\big) \overbrace{\left| \frac{d}{dy} g^{-1}(y) \right|}^{\text{Jacobian determinant의 절대값}} \\
 &=& f_X(x) \left| \frac{d}{dy} g^{-1}(y) \right|
 \end{eqnarray*}$$
 
