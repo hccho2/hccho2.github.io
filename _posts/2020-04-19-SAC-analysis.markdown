@@ -179,7 +179,7 @@ $$\overbrace{A_T}^{\text{constraint가 적용된 최대값}} \leq \quad \quad \m
 
 $$A_T \quad \leq  \quad \min_{\alpha_T \geq 0} \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alpha_T\big( -\log\pi_T(a_T \vert s_T) - \mathcal{H}_0 \big) \Big]$$
  
-* 그런데 이 부등식은 등식으로 성립한다. 이유는 Slater's condition이 만족되어, strong duality가 성립하기 때문이다(the objective is linear and the constraint (entropy) is convex function in $\pi_T$). 
+* 그런데 이 부등식은 등식으로 성립한다. 이유는 Slater's condition이 만족되어, strong duality가 성립하기 때문이다(the objective is linear and the constraint (entropy) is convex function in $$\pi_T$$). 
 
 $$A_T = \min_{\alpha_T \geq 0} \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alpha_T\big( -\log\pi_T(a_T \vert s_T) - \mathcal{H}_0 \big) \Big]$$
 
