@@ -49,7 +49,7 @@ $$\max\ \big[Q + \alpha (-\log p)\big] \quad \quad \text{or}  \quad \quad \min\ 
 
 * SAC는 보통의 Policy Gradient와 다른 Soft Q-Learning을 사용하기 때문에, Replay Buffer를 사용하는 Off Policy 모델이다. Soft Q-Learning은 $$\exp Q$$ (또는 softmax $$Q$$) 값을 policy 확률로 보는 방법이다.
 
-![]({{ '/assets/images/sac-unimoda-multimodall-policy.png' | relative_url }}){: style="width: 70%;" class="center"}
+![]({{ '/assets/images/sac-unimoda-multimodall-policy.png' | relative_url }}){: style="width: 100%;" class="center"}
 
 *그림: A multimodal $$Q$$-function: 1. 왼쪽 그림과 같은 $$Q$$-function이 주어져 있을 때, policy를 정규분포로 예측한다면, 오른꼭의 작은 mode에 대한 action 확률이 높아질 수 없다. 2. policy를 $$\exp Q(s_t,a_t)$$에 비례하게 만든다면, 상황 변화에 더 잘 대응할 수 있는 모델을 만들 수 있다.
 
@@ -65,8 +65,17 @@ H(p) &=& \mathbb{E}_{x\sim p} \Big[ -\log p(x) \Big], \nonumber\\
 
 * entropy regularization coefficient(or temperature coefficient) $$\alpha$$는 상수로 고정하는 경우도 있고, training을 통해 update하는 경우도 있다.
 * 이론적으로 위와 같이 soft value function을 정의해도 optimal policy로 수렴한다.
+* Policy Network($$\pi_\phi$$), Value Network($$\V_\psi, \V_{\bar{\psi}}$$), Q-Network($$\Q_{\theta}$$) network이 필요하다. Value값은 $$Q$$값으로 부터 구할 수도 있지만, SAC에서는 모델의 안정성을 위해 별도의 Value Network을 두었다. $$\V_{\bar{\psi}}$$는 Value target Network으로 train 대상이 되지는 않고, $$\V_\psi$$로 부터 exponentially moving average로 update된다. 두번째 SAC 논문에서는 Value Network 없이 Q-Network만으로 구현하고 있다. continuous action space이기 때문에, Q-Network의 입력은 state와 action의 concat이 된다.
+* SAC는 Replay Buffer를 사용하는 off policy 모델이다. Replay Buffer $$\mathcal{D} = \{ (s_t,a_t,r_t,d_n,s_{t+1}) \}$$로 구성된다. 
+* Value Loss: Value Network $$\V_\psi$$ training.
 
+$$\begin{eqnarray}
+J_V(\psi) = \E_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(\V_\psi(s_t) - \E_{\bar{a}_t\sim\pi_\phi}\big[{\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}
+\end{eqnarray}$$
 
+![]({{ '/assets/images/sac_1.png' | relative_url }}){: style="width: 100%;" class="center"}
+
+*그림: Value Loss: $$\bar{a}_t$$는 replay buffer에서의 action이 아니고, policy network에서 새롭게 생성한 action이다. 참고로 $$s_t$$ 대신 $$s_{t+1}$$를 이용해서 value loss를 구할 수도 있다.
 
 
 
@@ -79,5 +88,4 @@ H(p) &=& \mathbb{E}_{x\sim p} \Big[ -\log p(x) \Big], \nonumber\\
 ## Reference
 
 * [딥러닝 정리 자료](https://drive.google.com/open?id=16olGwVvk_smtgopmuUtouOf1ad1RGpIf){:target="_blank"}
-* <https://bair.berkeley.edu/blog/2017/10/06/soft-q-learning/>{:target="_blank"}
 * <https://bair.berkeley.edu/blog/2017/10/06/soft-q-learning/>{:target="_blank"}
