@@ -163,7 +163,10 @@ J(\alpha) &=& \mathbb{E}_{a_t\sim \pi_t} \Big[ -\alpha \log \pi_t(a_t \vert s_t)
 \end{eqnarray}$$
 
 * 자세한 전개 과정은 [이곳](https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html#sac-with-automatically-adjusted-temperature){:target="_blank"}을 참고하면 된다. dual problem으로 변환해서 전개한 후, 실질적으로 $$\alpha$$를 구하는 network과 policy를 구하는 network이 분리되어 구해져야 하기 때문에, $$Q_t, \pi_t$$를 구한 후, $$\alpha_t$$를 구하게 된다. 그래서 $$Q, \pi$$와 분리된 $$\alpha$$만의 optimization 문제가 만들어진다. 즉 $$J(\alpha)$$를 최소화 하면 된다. $$J(\alpha)$$도 기대값으로 표현된 식인데, 구체적인 기대값을 구하기 어렵기 때문에, 식(\ref{eq46})와 같은 방식으로 Policy Network에 $$s_t$$를 넣어 action $$\bar{a}_t$$를 하나 sampling해서 식(\ref{eq48})과 같이 대체할 수 있다.
-
+* 이 식의 직관적인 의미는 단순하다.
+	* entropy $$-\log \pi_t(a_t \vert s_t)$$가 $$\mathcal{H}_0$$보다 크면, minimization을 위해서 $$\alpha$$값을 줄이게 된다. 즉 entropy가 너무 크면 식(\ref{eq43}), (\ref{eq44})에서 $$\alpha$$값을 0에 가깝게 만든다.
+	* 반대로, entropy가 $$\mathcal{H}_0$$보다 작으면, $$\alpha$$값이 커지게 된다.
+	* 구현에서는 target entropy $$\mathcal{H}_0$$를 0보다 낮게 잡아놓고, $$\alpha$$값이 train을 할 수록 계속 낮아지게 한다. $$\alpha$$의 초기값과 leaning rate을 잘 설정해야 한다.
 
 
 
