@@ -27,7 +27,7 @@ date:   2020-04-19 15:53:34 +0900
 
 PPO![PPO test]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="center"}  SAC![SAC test]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="center"}
 
-<p align="center"><img src="/assets/images/pendulum-ppo.gif"> <img src="/assets/images/pendulum-sac.gif"> </p>
+<p align="center"><img src="/assets/images/pendulum-ppo.gif" width="50" height="50"> <img src="/assets/images/pendulum-sac.gif" width="50" height="50"> </p>
 
 
 ## Reference
