@@ -103,3 +103,4 @@ $$\color{blue}{\text{안녕}}$$
 안녕하세요
 
 
+<p align="center"><img src="/assets/images/pendulum-ppo.gif" width="200" height="200"> <img src="/assets/images/pendulum-sac.gif" width="200" height="200"> </p>

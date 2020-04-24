@@ -25,9 +25,14 @@ date:   2020-04-19 15:53:34 +0900
 * SAC for Discrete Action Space(2019년 10월): [Soft Actor-Critic for Discrete Action Settings](https://arxiv.org/abs/1910.07207){:target="_blank"}
 * Soft Q-Learning(2017년 2월): [Reinforcement Learning with Deep Energy-Based Policies](https://arxiv.org/abs/1702.08165){:target="_blank"}
 
+
+PPO            |  SAC
+:-------------------------:|:-------------------------:
+![]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="left"}  |  ![]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="right"}
+
 PPO![PPO test]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="left"}  SAC![SAC test]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="right"}
 
-<p align="center"><img src="/assets/images/pendulum-ppo.gif" width="50" height="50"> <img src="/assets/images/pendulum-sac.gif" width="50" height="50"> </p>
+<p align="center"><img src="/assets/images/pendulum-ppo.gif" width="200" height="200"> <img src="/assets/images/pendulum-sac.gif" width="200" height="200"> </p>
 
 
 ## Reference
