@@ -111,8 +111,8 @@ J_{\pi}(\phi)  &=&  \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a
 * 이 식에서도 기대값 계산은 Value Loss와 동일하게 sampling을 통해 처리한다. 그런데, sampling된 $$\bar{a}_t$$에 관한 backpropagation의 미분이 필요하기 때문에 Policy Network의 distribution에서 reparameterization trick이 필요하다.
 * 식(\ref{eq43}), (\ref{eq44})를 비교해 보자. KL-Divergence를 최소화 한다는 것과 soft value function 값을 최대화 한다는 것이 동치라는 것을 알 수 있다.
 * 2개의 $Q$-Networks: Our algorithm also makes use of two Q-functions to mitigate positive bias in the policy improvement step that is known to degrade performance of value based methods. $$Q_{\theta}$$ 대신, 2개의 $$Q_{\theta_1}, Q_{\theta_2}$$을 각각 독립적으로 train 시켜서 min값을 적용한다. 이런 방법은 train 속도 향상에도 도움이 된다. 식(\ref{eq41}), (\ref{eq44})에서 $$Q_\theta$$를 $$\min \big[ Q_{\theta_1}, Q_{\theta_2} \big]$$으로 바꾸면 된다.
-* squashing function $$\tanh$$: 보통 continuous action space에서 policy network은 정규분포로 모델링하고 action range를 벗어나는 action은 clipping으로 처리한다. SAC논문에서는 $$u\sim N(\mu,\sigma)$$를 예측하고 $$a=\tanh(u)$$로 action을 예측했다. 따라서 action $$a$$의 likelihood(probability density function값)은 change of variables를 이용해서 계산해주면 된다. 
-* 먼저 일반적인 확률 변수와 확률밀도 함수에서의 change of variables에 대해 살펴보자. 확률 변수 $X$의 pdf가 $$f_X(x)$$라 하자. 이때 확률변수 $$Y:=g(X)$$의 pdf를 구하는 과정이 change of variables이다. 확률 변수 $$Y$$의 pdf $$f_Y(y)$$는 다음과 같이 주어진다.
+* squashing function $$\tanh$$: 보통 continuous action space에서 policy network은 정규분포로 모델링하고 action range를 벗어나는 action은 clipping으로 처리한다. SAC논문에서는 $$u\sim N(\mu,\sigma)$$를 예측하고 $$a=\tanh(u)$$로 action을 예측했다. 따라서 action $$a$$의 likelihood(probability density function(pdf)값)은 change of variables를 이용해서 계산해주면 된다. 
+* 먼저 일반적인 확률 변수와 확률밀도 함수에서의 change of variables에 대해 살펴보자. 확률 변수 $$X$$의 pdf가 $$f_X(x)$$라 하자. 이때 확률변수 $$Y:=g(X)$$의 pdf를 구하는 과정이 change of variables이다. 확률 변수 $$Y$$의 pdf $$f_Y(y)$$는 다음과 같이 주어진다.
  
  $$\begin{eqnarray*}
  f_Y(y) &=&   f_X\big(g^{-1}(y)\big) \overbrace{\left| \frac{d}{dy} g^{-1}(y) \right|}^{\text{\scriptsize Jacobian determinant의 절대값}} \\
