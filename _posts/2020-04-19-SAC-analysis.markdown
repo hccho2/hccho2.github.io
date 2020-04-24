@@ -199,7 +199,7 @@ $$A_T = \min_{\alpha_T \geq 0} \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alp
 표: Discrete Soft Actor Critic: Ploicy Network의 Policy Loss, $$Q$$-Loss를 계산할 때는 tensorflow graph의 reuse가 필요하다. main $$Q$$-Network은 $$Q_{\theta_i}(s_t)$$를 한번 계산한 후, $$Q$$-Loss에서는 $$a_t$$에서의 값만 indexing하면 된다.
 
 
-## Gym Gamess
+## Gym Games
 * Discrete Action, CartPole-v1: vanilla Policy Gradient 정도의 성능이 나온다. 
 * Continous Action, Pendulum-v0: PPO보다 train 속도가 느리고, 결과도 좀 불안정하다. 이유는 위의 gif 그림을 참고하면 된다.
 * BreakoutDeterministic-v4: train이 잘 되지 않는다.
