@@ -91,20 +91,20 @@ J_Q(\theta)  &=& \mathbb{E}_{(s_t,a_t)\sim\mathcal{D}} \Bigg[ \frac{1}{2} \bigg(
 
 * next state $$s_{t+1}$$은 $$s_{t+1}\sim p$$로 표시되어 있지만, 구현에서는 replay buffer에 있는 $$s_{t+1}$$이다. $$\hat{Q}(s_t,a_t)$$의 gradient는 계산되지 않아야 한다. 
 * 식($$\ref{eq41}$$)에서 Value Network의 target에 Q-Network값이 사용되고, 식(\ref{eq42})에서 Q-Newtork의 target에 Value Network이 사용된다. 이런 순환 참조 구조를 벗어나기 위해, Value Network의 copy인 Value target Network $$V_{\bar{\psi}}$$를 만드는 것이다. 
-또 다른 측면으로, 식(\ref{eq42})에서 Value Network $$V_{\psi}$$ 대신 target Network $$\V_{\bar{\psi}}$$를 사용하는 것은 DQN에서 main network, target network으로 2개 사용하는 것과 같은 원리이다.
+또 다른 측면으로, 식(\ref{eq42})에서 Value Network $$V_{\psi}$$ 대신 target Network $$V_{\bar{\psi}}$$를 사용하는 것은 DQN에서 main network, target network으로 2개 사용하는 것과 같은 원리이다.
 * target value Network $$V_{\bar{\psi}}$$ update 시키는 방식 2가지.
 	* 주기적으로(periodically) update.
 	* Polyak averaging: exponentially weighted averaging
 
 * Policy Loss: expected KL-Divergence 
-$$J_{\pi}(\phi)  = \E_{s_t \sim \mathcal{D}} \Bigg [ D_{KL} \bigg( \pi_{\phi} (\cdot | s_t)\ \Vert\ \frac{\exp(\frac{1}{\alpha}\Q_\theta(s_t, \cdot))}{Z_\theta(s_t)}  \bigg) \Bigg] $$ 
+$$J_{\pi}(\phi)  = \E_{s_t \sim \mathcal{D}} \Bigg [ D_{KL} \bigg( \pi_{\phi} (\cdot | s_t)\ \Vert\ \frac{\exp(\frac{1}{\alpha}Q_\theta(s_t, \cdot))}{Z_\theta(s_t)}  \bigg) \Bigg] $$ 
 
 * 보통의 Policy Gradient 모델이 Off Policy 방법을 적용하기 위해, Old Policy로 생성된 Reaplay Buffer의 data로 New Policy를 update하기 위한 방법이 있어야 한다. TRPO, PPO에서는 probability ratio를 이용한 important sampling 기법을 사용한다. 
-SAC에서는 $$\exp \Q(s_t,\cdot)$$를 normalization($$Z_\theta(s_t)$$)해서 확률분포로 간주한다. 그래서 new policy와 $$\exp \Q(s_t, \cdot)$$의 KL-Divergence가 최소화 되도록 한다. 실제 계산에서는 normalization term인 $$Z_\theta(s_t)$$는 무시해도 된다.
+SAC에서는 $$\exp Q(s_t,\cdot)$$를 normalization($$Z_\theta(s_t)$$)해서 확률분포로 간주한다. 그래서 new policy와 $$\exp Q(s_t, \cdot)$$의 KL-Divergence가 최소화 되도록 한다. 실제 계산에서는 normalization term인 $$Z_\theta(s_t)$$는 무시해도 된다.
 
 $$\begin{eqnarray}
-J_{\pi}(\phi)  &=&  \E_{s_t \sim \mathcal{D}} \Bigg [ \E_{\bar{a}_t\sim \pi_{\phi}} \Big[ \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - \Q_\theta(s_t, \bar{a}_t)  \Big]  \Bigg] \label{eq44} \\
-&\approx& \E_{s_t \sim \mathcal{D}} \Big [  \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - \Q_\theta(s_t, \bar{a}_t)  \Big] \label{eq49} 
+J_{\pi}(\phi)  &=&  \E_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a}_t\sim \pi_{\phi}} \Big[ \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big]  \Bigg] \label{eq44} \\
+&\approx& \E_{s_t \sim \mathcal{D}} \Big [  \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big] \label{eq49} 
 \end{eqnarray}$$
 * 이 식에서도 기대값 계산은 Value Loss와 동일하게 sampling을 통해 처리한다. 그런데, sampling된 $\bar{a}_t$에 관한 backpropagation의 미분이 필요하기 때문에 Policy Network의 distribution에서 reparameterization trick이 필요하다.
 
