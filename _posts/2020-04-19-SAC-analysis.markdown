@@ -90,8 +90,8 @@ J_Q(\theta)  &=& \mathbb{E}_{(s_t,a_t)\sim\mathcal{D}} \Bigg[ \frac{1}{2} \bigg(
 \end{eqnarray}$$
 
 * next state $$s_{t+1}$$은 $$s_{t+1}\sim p$$로 표시되어 있지만, 구현에서는 replay buffer에 있는 $$s_{t+1}$$이다. $$\hat{Q}(s_t,a_t)$$의 gradient는 계산되지 않아야 한다. 
-* 식($$\ref{eq41}$$)에서 Value Network의 target에 Q-Network값이 사용되고, 식(\ref{eq42})에서 Q-Newtork의 target에 Value Network이 사용된다. 이런 순환 참조 구조를 벗어나기 위해, Value Network의 copy인 Value target Network $$\V_{\bar{\psi}}$$를 만드는 것이다. 
-또 다른 측면으로, 식(\ref{eq42})에서 Value Network $$\V_{\psi}$$ 대신 target Network $$\V_{\bar{\psi}}$$를 사용하는 것은 DQN에서 main network, target network으로 2개 사용하는 것과 같은 원리이다.
+* 식($$\ref{eq41}$$)에서 Value Network의 target에 Q-Network값이 사용되고, 식(\ref{eq42})에서 Q-Newtork의 target에 Value Network이 사용된다. 이런 순환 참조 구조를 벗어나기 위해, Value Network의 copy인 Value target Network $$V_{\bar{\psi}}$$를 만드는 것이다. 
+또 다른 측면으로, 식(\ref{eq42})에서 Value Network $$V_{\psi}$$ 대신 target Network $$\V_{\bar{\psi}}$$를 사용하는 것은 DQN에서 main network, target network으로 2개 사용하는 것과 같은 원리이다.
 * target value Network $$V_{\bar{\psi}}$$ update 시키는 방식 2가지.
 	* 주기적으로(periodically) update.
 	* Polyak averaging: exponentially weighted averaging
