@@ -132,6 +132,26 @@ $$\begin{eqnarray*}
 
 $$\log \mu(u\vert s) = \sum _i \log \mu(u_i \vert s)$$
 
+## 두번째 논문: Value Network 없이 Q-Network만으로 모델 구성
+
+* Value Network없이 Q-Network과 Policy Network으로만 구성. Q-Network이 $$Q_{\theta_1}, Q_{\theta_2}$$ 2개 있어야 하고, target Q-Network $$Q_{\bar{\theta}_1}, Q_{\bar{\theta}_2}$$도 있어야 하기 때문에, 모두 4개의 Q-Network이 필요하다.
+* Value Network이 사용되는 식(\ref{eq42})를 수정해야 한다. Replay Buffer $$\mathcal{D}$$로 부터 data $$(s_t,a_t,r_t,d_n,s_{t+1})$$가 주어져 있다면, Policy Network에 $$s_{t+1}$$을 넣어 sampling하면 $$\bar{a}_{t+1}, \pi(\bar{a}_{t+1} \vert s_{t+1})$$를 얻을 수 있다.
+
+$$\begin{eqnarray}
+	J_Q(\theta_i)  &=& \E_{(s_t,a_t)\sim\mathcal{D}} \Bigg[ \frac{1}{2} \bigg( Q_{\theta_i}(s_t,a_t) - \underbrace{\hat{Q}(s_t,a_t)}_{\text{stop gradient}} \bigg)^2 \Bigg]  \ \ \text{with}  \nonumber \\
+	\hat{\Q}(s_t,a_t) &=& r(s_t,a_t) + \gamma  \E_{a_{t+1}\sim p}\Bigg(\min\Big [ Q_{\bar{\theta}_1}(s_{t+1},a_{t+1} ), Q_{\bar{\theta}_2}(s_{t+1},a_{t+1} )  \Big] - \alpha \log \pi(a_{t+1} \vert s_{t+1}) \Bigg) \label{eq45}\tag{6}\\
+										&\approx& r(s_t,a_t) + \gamma  \Bigg(\min\Big [ Q_{\bar{\theta}_1}(s_{t+1},\bar{a}_{t+1} ), Q_{\bar{\theta}_2}(s_{t+1},\bar{a}_{t+1} )  \Big] - \alpha \log \pi(\bar{a}_{t+1} \vert s_{t+1}) \Bigg) \label{eq46}\tag{7}
+\end{eqnarray}$$
+
+* 식(\ref{eq45})와 같이 state $$s_{t+1}$$에서의 기대값을 계산해야 하지만, 기대값을 계산하기 어려우므로 대신 특정 action $$\bar{a}_{t+1}$$을 하나 생성해서 식(\ref{eq46})과 같이 처리한다. 만약 discrete action space였다면, 그 기대값을 계산하기가 쉽다.
+
+
+## Temperature Hyperparameter $$\alpha$$ Train Model
+* entropy regularization coefficient(or temperature coefficient) $$\alpha$$를 hyperparameter로 고정하지 않고, train을 통해 찾는 방법을 생각해 보자. minimum policy entropy threshold인 상수 $\mathcal{H}_0$에 대하여, entropy가  $\mathcal{H}_0$보다 커지도록 제약을 둔다고해보자
+
+
+
+
 
 ## Reference
 
