@@ -174,7 +174,7 @@ $$A_T: = \max_{\pi_T} \mathbb{E}_{s_T, a_T}  \Big [ r(s_T, a_T) \Big]  \leq  \ma
 
 * 여기서 constraint  $$-\log\pi_T(a_T \vert s_T) \geq \mathcal{H}_0$$ 조건을 제거($$\alpha_T \geq 0$$은 유지)하면 더 다양한 값을 가질 수 있으므로 max값이 더 커질 수 있다. 따라서, 다음 식이 성립한다(weak duality).
 
-$$\overbrace{A_T}^{\text{\scriptsize constraint가 적용된 최대값}} \leq \quad \quad \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alpha_T\big( -\log\pi_T(a_T \vert s_T) - \mathcal{H}_0 \big) \Big]$$
+$$\overbrace{A_T}^{\text{constraint가 적용된 최대값}} \leq \quad \quad \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alpha_T\big( -\log\pi_T(a_T \vert s_T) - \mathcal{H}_0 \big) \Big]$$
 
 * 이 식은 모든 $$\alpha_T \geq 0$$에 대하여 성립하므로, minimum을 취해도 성립한다.
 
