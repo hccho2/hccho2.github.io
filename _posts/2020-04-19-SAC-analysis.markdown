@@ -65,12 +65,13 @@ H(p) &=& \mathbb{E}_{x\sim p} \Big[ -\log p(x) \Big], \nonumber\\
 
 * entropy regularization coefficient(or temperature coefficient) $$\alpha$$는 상수로 고정하는 경우도 있고, training을 통해 update하는 경우도 있다.
 * 이론적으로 위와 같이 soft value function을 정의해도 optimal policy로 수렴한다.
-* Policy Network($$\pi_\phi$$), Value Network($$\V_\psi, \V_{\bar{\psi}}$$), Q-Network($$\Q_{\theta}$$) network이 필요하다. Value값은 $$Q$$값으로 부터 구할 수도 있지만, SAC에서는 모델의 안정성을 위해 별도의 Value Network을 두었다. $$\V_{\bar{\psi}}$$는 Value target Network으로 train 대상이 되지는 않고, $$\V_\psi$$로 부터 exponentially moving average로 update된다. 두번째 SAC 논문에서는 Value Network 없이 Q-Network만으로 구현하고 있다. continuous action space이기 때문에, Q-Network의 입력은 state와 action의 concat이 된다.
+
+* Policy Network($$\pi_\phi$$), Value Network($$\mathbb{V}_\psi, \mathbb{V}_{\bar{\psi}}$$), Q-Network($$\mathbb{Q}_{\theta}$$) network이 필요하다. Value값은 $$Q$$값으로 부터 구할 수도 있지만, SAC에서는 모델의 안정성을 위해 별도의 Value Network을 두었다. $$\mathbb{V}_{\bar{\psi}}$$는 Value target Network으로 train 대상이 되지는 않고, $$\mathbb{V}_\psi$$로 부터 exponentially moving average로 update된다. 두번째 SAC 논문에서는 Value Network 없이 Q-Network만으로 구현하고 있다. continuous action space이기 때문에, Q-Network의 입력은 state와 action의 concat이 된다.
 * SAC는 Replay Buffer를 사용하는 off policy 모델이다. Replay Buffer $$\mathcal{D} = \{ (s_t,a_t,r_t,d_n,s_{t+1}) \}$$로 구성된다. 
-* Value Loss: Value Network $$\V_\psi$$ training.
+* Value Loss: Value Network $$\mathbb{V}_\psi$$ training.
 
 $$\begin{eqnarray}
-J_V(\psi) = \E_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(\V_\psi(s_t) - \E_{\bar{a}_t\sim\pi_\phi}\big[{\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}\tag{41}
+J_V(\psi) = \E_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(\mathbb{V}_\psi(s_t) - \E_{\bar{a}_t\sim\pi_\phi}\big[{\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}\tag{41}
 \end{eqnarray}$$
 
 ![]({{ '/assets/images/sac_1.png' | relative_url }}){: style="width: 100%;" class="center"}
@@ -85,7 +86,7 @@ $$  \E_{\bar{a}_t\sim\pi_\phi}\big[\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\p
 $$
 \begin{eqnarray}
 J_Q(\theta)  &=& \E_{(s_t,a_t)\sim\mathcal{D}} \Bigg[ \frac{1}{2} \bigg( \Q_\theta(s_t,a_t) - \underbrace{\hat{\Q}(s_t,a_t)}_{\text{stop gradient}} \bigg)^2 \Bigg]  \ \ \text{with}  \nonumber \\
-\hat{\Q}(s_t,a_t) &:=& r(s_t,a_t) + \gamma \E_{s_{t+1}\sim p} \Big [ \V_{\bar{\psi}} (s_{t+1})  \Big] \ \ \leftarrow {p: \text{transition probability.}} \label{eq42}
+\hat{\Q}(s_t,a_t) &:=& r(s_t,a_t) + \gamma \E_{s_{t+1}\sim p} \Big [ \mathbb{V}_{\bar{\psi}} (s_{t+1})  \Big] \ \ \leftarrow {p: \text{transition probability.}} \label{eq42}
 \end{eqnarray}$$
 
 * next state $$s_{t+1}$$은 $$s_{t+1}\sim p$$로 표시되어 있지만, 구현에서는 replay buffer에 있는 $$s_{t+1}$$이다. $$\hat{\Q}(s_t,a_t)$$의 gradient는 계산되지 않아야 한다. 
