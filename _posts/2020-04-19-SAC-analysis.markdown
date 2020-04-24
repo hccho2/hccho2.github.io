@@ -25,9 +25,11 @@ date:   2020-04-19 15:53:34 +0900
 * SAC for Discrete Action Space(2019년 10월): [Soft Actor-Critic for Discrete Action Settings](https://arxiv.org/abs/1910.07207){:target="_blank"}
 * Soft Q-Learning(2017년 2월): [Reinforcement Learning with Deep Energy-Based Policies](https://arxiv.org/abs/1702.08165){:target="_blank"}
 
+
 PPO            |  SAC
 :-------------------------:|:-------------------------:
 ![]({{ '/assets/images/pendulum-ppo.gif' | relative_url }}){: style="width: 50%;" class="left"}  |  ![]({{ '/assets/images/pendulum-sac.gif' | relative_url }}){: style="width: 50%;" class="right"}
+
 *PPO가 SAC보다 안정적이다. SAC모델 결과가 좀 더 불안정해 보이는 이유는, SAC 모델이 가능한 random action을 추구하면서도 임무(task)를 성공시키는 것이 목적이기 때문이다.
 
 
