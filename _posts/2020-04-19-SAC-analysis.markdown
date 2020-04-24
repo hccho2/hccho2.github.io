@@ -108,7 +108,7 @@ J_{\pi}(\phi)  &=&  \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a
 &\approx& \mathbb{E}_{s_t \sim \mathcal{D}} \Big [  \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big] \label{eq49} 
 \end{eqnarray}$$
 
-* 이 식에서도 기대값 계산은 Value Loss와 동일하게 sampling을 통해 처리한다. 그런데, sampling된 $\bar{a}_t$에 관한 backpropagation의 미분이 필요하기 때문에 Policy Network의 distribution에서 reparameterization trick이 필요하다.
+* 이 식에서도 기대값 계산은 Value Loss와 동일하게 sampling을 통해 처리한다. 그런데, sampling된 $$\bar{a}_t$$에 관한 backpropagation의 미분이 필요하기 때문에 Policy Network의 distribution에서 reparameterization trick이 필요하다.
 
 
 
