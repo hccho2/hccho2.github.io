@@ -157,9 +157,9 @@ $$\begin{eqnarray*}
 * 이 문제를 dual problem으로 변환 후, time step $t=T, T-1, T-2, \cdots$ 순서의 backward로 전개하여 최종적인 minimization 문제의 objective function을 얻게 된다.
 	
 $$\begin{eqnarray}
-J(\alpha) &=& \mathbb{E}_{a_t\sim \pi_t} \Big[ -\alpha \log \pi_t(a_t \vert s_t) - \alpha \mathcal{H}_0 \Big] \label{eq47}\\
+J(\alpha) &=& \mathbb{E}_{a_t\sim \pi_t} \Big[ -\alpha \log \pi_t(a_t \vert s_t) - \alpha \mathcal{H}_0 \Big] \label{eq47}\tag{8}\\
 					&=& \alpha \overbrace{\mathbb{E}_{a_t\sim \pi_t} \Big[ - \log \pi_t(a_t \vert s_t) - \mathcal{H}_0 \Big]}^{\text{stop gradient}}\\
-&\approx& -\alpha \log \pi_t(\bar{a}_t \vert s_t) - \alpha \mathcal{H}_0 \label{eq48}\tag{8}
+&\approx& -\alpha \log \pi_t(\bar{a}_t \vert s_t) - \alpha \mathcal{H}_0 \label{eq48}\tag{9}
 \end{eqnarray}$$
 
 * 자세한 전개 과정은 [이곳](https://lilianweng.github.io/lil-log/2018/04/08/policy-gradient-algorithms.html#sac-with-automatically-adjusted-temperature){:target="_blank"}을 참고하면 된다. dual problem으로 변환해서 전개한 후, 실질적으로 $$\alpha$$를 구하는 network과 policy를 구하는 network이 분리되어 구해져야 하기 때문에, $$Q_t, \pi_t$$를 구한 후, $$\alpha_t$$를 구하게 된다. 그래서 $$Q, \pi$$와 분리된 $$\alpha$$만의 optimization 문제가 만들어진다. 즉 $$J(\alpha)$$를 최소화 하면 된다. $$J(\alpha)$$도 기대값으로 표현된 식인데, 구체적인 기대값을 구하기 어렵기 때문에, 식(\ref{eq46})와 같은 방식으로 Policy Network에 $$s_t$$를 넣어 action $$\bar{a}_t$$를 하나 sampling해서 식(\ref{eq48})과 같이 대체할 수 있다.
