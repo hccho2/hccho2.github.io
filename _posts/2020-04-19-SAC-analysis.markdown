@@ -13,7 +13,7 @@ date:   2020-04-19 15:53:34 +0900
 
 > * Soft Actor Critic은 Policy Gradient 방식인 Actor Critic 모델의 변형이면서도 Replay Buffer로 train하는 off policy 모델이다. PG이면서도 off policy가 가능한 것은 Soft Q-Learning을 기반으로 하기 때문이다. 
 > * SAC는 Continuous Action Space를 대상으로 하는 모델이다. SAC를 Discrete Action Space에 적용할 수 있도록 수정한 모델도 있다.
-> * 모델의 성능은 PPO보다 못하다.
+> * 논문에서는  4족보행로봇(locomotion for a quadrupedal robot)에서 SOTA 성능이 나온다고 언급하고 있다. 전반적인 task에서는 PPO보다 못하다.
 
 
 -----
