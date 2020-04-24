@@ -57,10 +57,10 @@ $$\max\ \big[Q + \alpha (-\log p)\big] \quad \quad \text{or}  \quad \quad \min\ 
 
 $$\begin{eqnarray}
 H(p) &=& \mathbb{E}_{x\sim p} \Big[ -\log p(x) \Big], \nonumber\\
-\V(s_t) &=& \E_{a_t\sim\pi} \big[ \Q(s_t,a_t) \big] +\alpha H \big(\pi(\cdot | s_t)\big)  \nonumber\\
-				&=& \E_{a_t\sim\pi} \big[ \Q(s_t,a_t) -\alpha \log \pi(a_t \vert s_t) \big] \ \  \text{for } \alpha > 0, \label{eq43}\\
-\Q(s_t,a_t) &=& \E_{s_{t+1}\sim p, a_{t+1} \sim \pi} \Bigg[ r(s_t, a_t, s_{t+1}) + \gamma \Big( \Q(s_{t+1}, a_{t+1}) + \alpha H(\pi(\cdot | s_{t+1}))  \Big) \Bigg]\nonumber \\
-&=& \E_{s_{t+1}\sim p} \Bigg[ r(s_t, a_t, s_{t+1}) + \gamma \V(s_{t+1}) \Bigg] \nonumber
+ \mathbb{V}(s_t) &=&  \mathbb{E}_{a_t\sim\pi} \big[ \Q(s_t,a_t) \big] +\alpha H \big(\pi(\cdot | s_t)\big)  \nonumber\\
+				&=&  \mathbb{E}_{a_t\sim\pi} \big[ \Q(s_t,a_t) -\alpha \log \pi(a_t \vert s_t) \big] \ \  \text{for } \alpha > 0, \label{eq43}\\
+\Q(s_t,a_t) &=&  \mathbb{E}_{s_{t+1}\sim p, a_{t+1} \sim \pi} \Bigg[ r(s_t, a_t, s_{t+1}) + \gamma \Big( \Q(s_{t+1}, a_{t+1}) + \alpha H(\pi(\cdot | s_{t+1}))  \Big) \Bigg]\nonumber \\
+&=&  \mathbb{E}_{s_{t+1}\sim p} \Bigg[ r(s_t, a_t, s_{t+1}) + \gamma \mathbb{V}(s_{t+1}) \Bigg] \nonumber
 \end{eqnarray}$$
 
 * entropy regularization coefficient(or temperature coefficient) $$\alpha$$는 상수로 고정하는 경우도 있고, training을 통해 update하는 경우도 있다.
