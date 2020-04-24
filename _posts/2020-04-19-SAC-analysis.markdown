@@ -190,11 +190,11 @@ $$A_T = \min_{\alpha_T \geq 0} \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alp
 * Discrete Action Space에서는 sampling을 통해 근사적으로 기대값을 계산하지 않고, 기대값을 직접 계산할 수 있다. 식(\ref{eq49}), (\ref{eq46}), (\ref{eq48})을 원래대로 식(\ref{eq44}), (\ref{eq45}), (\ref{eq47})로 계산할 수 있다. 따라서, sampling이 필요없고, replay buffer에 있는 data만 사용하면 된다.
 * Discrete Soft Actor Critic 구현은 DQN 구현과 유사한 측면이 많다.
 
-|                 |     Policy Network    |                   main Q-Network                    |       target Q-Network          |                |
-|-----------------|-----------------------|-----------------------------------------------------|---------------------------------|----------------|
-| Policy Loss     | $$\pi_\phi(s_t)$$     | $$Q_{\theta_i}(s_t)$$                               |                                 | 식(\ref{eq44})  |
-| $$Q$$-Loss      | $$\pi_\phi(s_{t+1})$$ | $$Q_{\theta_i}(s_t,a_t)$$ $$\leftarrow$$ prediction | $$Q_{\bar{\theta}_i}(s_{t+1})$$ | 식(\ref{eq45})  |
-| $$\alpha$$-Loss | $$\pi_\phi(s_t)$$     |                                                     |                                 | 식(\ref{eq47})  |
+|                      |     Policy Network       |                   main Q-Network                       |       target Q-Network          |                |
+|----------------------|--------------------------|--------------------------------------------------------|---------------------------------|----------------|
+| Policy Loss          |    $$\pi_\phi(s_t)$$     | $$Q_{\theta_i}(s_t)$$                                  |                                 | 식(\ref{eq44})  |
+| $$Q$$-Loss           |   $$\pi_\phi(s_{t+1})$$  | $$Q_{\theta_i}(s_t,a_t)$$ $$\leftarrow$$ prediction    | $$Q_{\bar{\theta}_i}(s_{t+1})$$ | 식(\ref{eq45})  |
+| $$\alpha$$-Loss      |   $$\pi_\phi(s_t)$$      |                                                        |                                 | 식(\ref{eq47})  |
 표: Discrete Soft Actor Critic: Ploicy Network의 Policy Loss, $$Q$$-Loss를 계산할 때는 tensorflow graph의 reuse가 필요하다. main $$Q$$-Network은 $$Q_{\theta_i}(s_t)$$를 한번 계산한 후, $$Q$$-Loss에서는 $$a_t$$에서의 값만 indexing하면 된다.
 
 
