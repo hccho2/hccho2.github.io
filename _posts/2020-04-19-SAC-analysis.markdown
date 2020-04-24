@@ -97,14 +97,14 @@ J_Q(\theta)  &=& \mathbb{E}_{(s_t,a_t)\sim\mathcal{D}} \Bigg[ \frac{1}{2} \bigg(
 	* Polyak averaging: exponentially weighted averaging
 
 * Policy Loss: expected KL-Divergence 
-$$J_{\pi}(\phi)  = \E_{s_t \sim \mathcal{D}} \Bigg [ D_{KL} \bigg( \pi_{\phi} (\cdot | s_t)\ \Vert\ \frac{\exp(\frac{1}{\alpha}Q_\theta(s_t, \cdot))}{Z_\theta(s_t)}  \bigg) \Bigg] $$ 
+$$J_{\pi}(\phi)  = \mathbb{E}_{s_t \sim \mathcal{D}} \Bigg [ D_{KL} \bigg( \pi_{\phi} (\cdot | s_t)\ \Vert\ \frac{\exp(\frac{1}{\alpha}Q_\theta(s_t, \cdot))}{Z_\theta(s_t)}  \bigg) \Bigg] $$ 
 
 * 보통의 Policy Gradient 모델이 Off Policy 방법을 적용하기 위해, Old Policy로 생성된 Reaplay Buffer의 data로 New Policy를 update하기 위한 방법이 있어야 한다. TRPO, PPO에서는 probability ratio를 이용한 important sampling 기법을 사용한다. 
 SAC에서는 $$\exp Q(s_t,\cdot)$$를 normalization($$Z_\theta(s_t)$$)해서 확률분포로 간주한다. 그래서 new policy와 $$\exp Q(s_t, \cdot)$$의 KL-Divergence가 최소화 되도록 한다. 실제 계산에서는 normalization term인 $$Z_\theta(s_t)$$는 무시해도 된다.
 
 $$\begin{eqnarray}
 J_{\pi}(\phi)  &=&  \E_{s_t \sim \mathcal{D}} \Bigg [ \mathbb{E}_{\bar{a}_t\sim \pi_{\phi}} \Big[ \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big]  \Bigg] \label{eq44} \\
-&\approx& \E_{s_t \sim \mathcal{D}} \Big [  \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big] \label{eq49} 
+&\approx& \mathbb{E}_{s_t \sim \mathcal{D}} \Big [  \alpha \log \pi_{\phi} ( \bar{a}_t | s_t)   - Q_\theta(s_t, \bar{a}_t)  \Big] \label{eq49} 
 \end{eqnarray}$$
 * 이 식에서도 기대값 계산은 Value Loss와 동일하게 sampling을 통해 처리한다. 그런데, sampling된 $\bar{a}_t$에 관한 backpropagation의 미분이 필요하기 때문에 Policy Network의 distribution에서 reparameterization trick이 필요하다.
 
