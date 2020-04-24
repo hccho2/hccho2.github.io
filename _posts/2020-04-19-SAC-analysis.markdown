@@ -65,7 +65,7 @@ Q(s_t,a_t) &=&  \mathbb{E}_{s_{t+1}\sim p, a_{t+1} \sim \pi} \Bigg[ r(s_t, a_t, 
 * entropy regularization coefficient(or temperature coefficient) $$\alpha$$는 상수로 고정하는 경우도 있고, training을 통해 update하는 경우도 있다.
 * 이론적으로 위와 같이 soft value function을 정의해도 optimal policy로 수렴한다.
 
-* Policy Network($$\pi_\phi$$), Value Network($$V_\psi, V_{\bar{\psi}}$$), Q-Network($$Q_{\theta}$$) network이 필요하다. Value값은 $$Q$$값으로 부터 구할 수도 있지만, SAC에서는 모델의 안정성을 위해 별도의 Value Network을 두었다. $$V_{\bar{\psi}}$$는 Value target Network으로 train 대상이 되지는 않고, $$V_\psi$$로 부터 exponentially moving average로 update된다. 두번째 SAC 논문에서는 Value Network 없이 Q-Network만으로 구현하고 있다. continuous action space이기 때문에, Q-Network의 입력은 state와 action의 concat이 된다.
+* Policy Network($$\pi_\phi$$), Value Network($$V_\psi, V_{\bar{\psi}}$$), Q-Network($$Q_{\theta}$$)이 필요하다. Value값은 $$Q$$값으로 부터 구할 수도 있지만, SAC에서는 모델의 안정성을 위해 별도의 Value Network을 두었다. $$V_{\bar{\psi}}$$는 Value target Network으로 train 대상이 되지는 않고, $$V_\psi$$로 부터 exponentially moving average로 update된다. 두번째 SAC 논문에서는 Value Network 없이 Q-Network만으로 구현하고 있다. continuous action space이기 때문에, Q-Network의 입력은 state와 action의 concat이 된다.
 * SAC는 Replay Buffer를 사용하는 off policy 모델이다. Replay Buffer $$\mathcal{D} = \{ (s_t,a_t,r_t,d_n,s_{t+1}) \}$$로 구성된다. 
 * Value Loss: Value Network $$V_\psi$$ training.
 
