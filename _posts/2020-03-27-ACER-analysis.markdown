@@ -6,7 +6,7 @@ title:  "ACER 뽀개기"
 date:   2020-03-27 20:53:34 +0900
 ---
 
-========
+> * PPO보다 강력한 off policy 성격을 강화한 Policy Gradient!!!
 
 
 # ACER를 분석해 보자!!!
