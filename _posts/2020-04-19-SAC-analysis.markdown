@@ -71,7 +71,7 @@ H(p) &=& \mathbb{E}_{x\sim p} \Big[ -\log p(x) \Big], \nonumber\\
 * Value Loss: Value Network $$\mathbb{V}_\psi$$ training.
 
 $$\begin{eqnarray}
-J_V(\psi) = \mathbb{E}_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(\mathbb{V}_\psi(s_t) - \mathbb{E}_{\bar{a}_t\sim\pi_\phi}\big[{\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}\tag{41}
+J_V(\psi) = \mathbb{E}_{s_t \sim \mathcal{D}}\Bigg[{\frac{1}{2}\bigg(\mathbb{V}_\psi(s_t) - \mathbb{E}_{\bar{a}_t\sim\pi_\phi}\big[{\Q_\theta(s_t, \bar{a}_t) - \alpha\log \pi_\phi(\bar{a}_t|s_t)}\big] \bigg)^2} \Bigg] \label{eq41}\tag{1}
 \end{eqnarray}$$
 
 ![]({{ '/assets/images/sac_1.png' | relative_url }}){: style="width: 100%;" class="center"}
