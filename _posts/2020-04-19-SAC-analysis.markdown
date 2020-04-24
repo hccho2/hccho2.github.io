@@ -191,9 +191,9 @@ $$A_T = \min_{\alpha_T \geq 0} \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alp
 
 |                 |     Policy Network    |                    main Q-Network                   |         target Q-Network        |                |
 |-----------------|:---------------------:|:---------------------------------------------------:|:-------------------------------:|:--------------:|
-| Policy Loss     |   $$\pi_\phi(s_t)$$   |                $$Q_{\theta_i}(s_t)$$                |                                 | 식(\ref{eq44}) |
-| $$Q$$-Loss      | $$\pi_\phi(s_{t+1})$$ | $$Q_{\theta_i}(s_t,a_t)$$ $$\leftarrow$$ prediction | $$Q_{\bar{\theta}_i}(s_{t+1})$$ | 식(\ref{eq45}) |
-| $$\alpha$$-Loss |   $$\pi_\phi(s_t)$$   |                                                     |                                 | 식(\ref{eq47}) |
+| Policy Loss     |   $$\pi_\phi(s_t)$$   |                $$Q_{\theta_i}(s_t)$$                |                                 | 식(\ref{eq44})  |
+| $$Q$$-Loss      | $$\pi_\phi(s_{t+1})$$ | $$Q_{\theta_i}(s_t,a_t)$$ $$\leftarrow$$ prediction | $$Q_{\bar{\theta}_i}(s_{t+1})$$ | 식(\ref{eq45})  |
+| $$\alpha$$-Loss |   $$\pi_\phi(s_t)$$   |                                                     |                                 | 식(\ref{eq47})  |
 
 표: Discrete Soft Actor Critic: Ploicy Network의 Policy Loss, $$Q$$-Loss를 계산할 때는 tensorflow graph의 reuse가 필요하다. main $$Q$$-Network은 $$Q_{\theta_i}(s_t)$$를 한번 계산한 후, $$Q$$-Loss에서는 $$a_t$$에서의 값만 indexing하면 된다.
 
