@@ -38,7 +38,7 @@ PPO            |  SAC
 
 $$\max\ [r\log p] \quad \quad \text{or}  \quad \quad \max\ [A \log p]$$
 
-* Policy 최적화는 높은 reward $r$을 주는 확룰 $p$를 더 크게 하거나 높은 advantage $$A$$를 주는 확률 $$p$$를 더 크게 하려고 최적화를 수행한다. SAC에서는 Objective Function 
+* Policy 최적화는 높은 reward $$r$$을 주는 확룰 $$p$$를 더 크게 하거나 높은 advantage $$A$$를 주는 확률 $$p$$를 더 크게 하려고 최적화를 수행한다. SAC에서는 Objective Function 
 
 $$\max\ \big[Q + \alpha (-\log p)\big] \quad \quad \text{or}  \quad \quad \min\ \big[\alpha \log p - Q\big] $$
 
