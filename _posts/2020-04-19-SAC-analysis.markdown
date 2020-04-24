@@ -202,7 +202,7 @@ $$A_T = \min_{\alpha_T \geq 0} \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alp
 * Discrete Action, CartPole-v1: vanilla Policy Gradient 정도의 성능이 나온다. 
 * Continous Action, Pendulum-v0: PPO보다 train 속도가 느리고, 결과도 좀 불안정하다. 이유는 위의 gif 그림을 참고하면 된다.
 * BreakoutDeterministic-v4: train이 잘 되지 않는다.
-* BipedalWalker-v3: train 속도는 PPO보다 느리다.
+* BipedalWalker-v3: train 속도는 PPO보다 느리다. SAC로 train한 모델이 더 빨리 나아간다.
 
 PPO            |  SAC
 :-------------------------:|:-------------------------:
