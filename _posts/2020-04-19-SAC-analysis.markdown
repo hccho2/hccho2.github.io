@@ -171,7 +171,7 @@ J(\alpha) &=& \mathbb{E}_{a_t\sim \pi_t} \Big[ -\alpha \log \pi_t(a_t \vert s_t)
 
 * 참고로 $$t=T$$인 경우에 대해서만, dual problem을 살펴보자. dual variable $$\alpha_T \geq 0, -\log\pi_T(a_T \vert s_T) \geq \mathcal{H}_0$$에 대하여 다음 식이 성립한다.
 
-$$A_T: = \max_{\pi_T} \mathbb{E}_{s_T, a_T}  \Big [ r(s_T, a_T) \Big]  \leq  \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alpha_T\big( -\log\pi_T(a_T \vert s_T) - \mathcal{H}_0 \big) \Big] \ \longleftarrow \text{constrain 조건 하에서} $$ 
+$$A_T: = \max_{\pi_T} \mathbb{E}_{s_T, a_T}  \Big [ r(s_T, a_T) \Big]  \leq  \max _{\pi_T} \mathbb{E} \Big[ r(s_T, a_T) + \alpha_T\big( -\log\pi_T(a_T \vert s_T) - \mathcal{H}_0 \big) \Big] \ \longleftarrow \text{constraint 조건 하에서} $$ 
 
 * 여기서 constraint  $$-\log\pi_T(a_T \vert s_T) \geq \mathcal{H}_0$$ 조건을 제거($$\alpha_T \geq 0$$은 유지)하면 더 다양한 값을 가질 수 있으므로 max값이 더 커질 수 있다. 따라서, 다음 식이 성립한다(weak duality).
 
