@@ -34,11 +34,13 @@ PPO            |  SAC
 
 ## Policy & Entropy
 
-* Policy Gradient의 일반적인 이야기를 해보자. Policy Gradient의 Objective Function은 다음과 같은 형태로 주어진다.
+* Policy Gradient의 일반적인 이야기를 해보자. Policy Gradient의 Objective Function은 다음과 같은 형태로 주어진다. 확률 $$p$$인 action을 취해 reward $$r$$을 받은 상황이다.
 
 $$\max\ [r\log p] \quad \quad \text{or}  \quad \quad \max\ [A \log p]$$
+* 
+* Policy 최적화는 높은 reward $$r$$을 주는 확룰 $$p$$를 더 크게 하거나 높은 advantage $$A$$를 주는 확률 $$p$$를 더 크게 하려고 최적화를 수행한다. ($$r,p$$)의 쌍이 묶여 있기 때문에 on policy가 된다. gradient update(train)을 통해 network이 변했다면, network이 생성하는 새로운 확률은 reward $$r$$을 만들어낸 확률이 아니다. 이러한 이유로 off policy가 될 수 없다.
 
-* Policy 최적화는 높은 reward $$r$$을 주는 확룰 $$p$$를 더 크게 하거나 높은 advantage $$A$$를 주는 확률 $$p$$를 더 크게 하려고 최적화를 수행한다. SAC에서는 Objective Function이 다음과 같이 주어진다. 
+* SAC에서는 Objective Function이 다음과 같이 주어진다. 
 
 $$\max\ \big[Q + \alpha (-\log p)\big] \quad \quad \text{or}  \quad \quad \min\ \big[\alpha \log p - Q\big] $$
 
